@@ -1,7 +1,7 @@
 package w16cs350.parser.patterns.meta;
 
-import w16cs350.parser.A_NonIteratingPatternMatcher;
-import w16cs350.parser.A_PatternMatcher;
+import w16cs350.parser.patterns.A_NonIteratingPatternMatcher;
+import w16cs350.parser.patterns.A_PatternMatcher;
 
 /**
  * Created by RowleyJohn on 2/23/2016.

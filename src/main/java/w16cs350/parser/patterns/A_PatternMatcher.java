@@ -1,4 +1,4 @@
-package w16cs350.parser;
+package w16cs350.parser.patterns;
 import w16cs350.controller.command.A_Command;
 
 import java.util.LinkedList;
@@ -82,7 +82,7 @@ public abstract class A_PatternMatcher {
         if(isLeaf()){
             return parseCommand(iterator);
         } else {
-            return delgate(iterator);
+            return delegate(iterator);
         }
     }
 
@@ -91,14 +91,12 @@ public abstract class A_PatternMatcher {
      * @param iterator the iterator containing the tokens.
      * @return Returns the command built by the tree
      */
-    private A_Command delgate(ListIterator<String> iterator
-    ){
+    private A_Command delegate(ListIterator<String> iterator){
         String next = iterator.next();
         iterator.previous();
-        for(int i = 0; i < patternMatchers.size(); i++){
-            A_PatternMatcher pattern = patternMatchers.get(i);
 
-            if(pattern.isMatch(iterator)){
+        for (A_PatternMatcher pattern : patternMatchers) {
+            if (pattern.isMatch(iterator)) {
                 return pattern.parse(iterator);
             }
         }
