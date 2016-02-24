@@ -36,7 +36,7 @@ public class UsePatternMatcher extends A_IteratingPatternMatcher {
 
         String id = tokens.next();
         String raw = tokens.next();
-        CoordinatesWorld world = PrimitiveDeserializer.parseWorldCoordinates(tokens);
+        CoordinatesWorld world = PrimitiveDeserializer.parseCoordinatesWorld(tokens);
 
         store.set(id,world);
         return new EmptyCommand();
