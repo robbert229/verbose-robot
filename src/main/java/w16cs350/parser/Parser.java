@@ -4,6 +4,7 @@ import w16cs350.controller.command.A_Command;
 import w16cs350.parser.patterns.meta.MetaCategoryPatternMatcher;
 
 import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  * Created by johnrowleyster on 2/23/16.
