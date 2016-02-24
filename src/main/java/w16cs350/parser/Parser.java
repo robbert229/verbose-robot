@@ -1,26 +1,28 @@
 package w16cs350.parser;
 
+import w16cs350.controller.command.A_Command;
+import w16cs350.parser.patterns.meta.MetaCategoryPatternMatcher;
+
+import java.util.LinkedList;
+
 /**
  * Created by johnrowleyster on 2/23/16.
  */
 
-public class Parser extends A_PatternMatcher {
+public class Parser extends A_NonIteratingPatternMatcher {
+    public Parser() {
+        super(null);
+    }
 
-    @Override
-    public void initializeMatchers() {
-
+    public A_Command parse(String line){
+        String[] tokens = line.split(" ");
+        LinkedList<String> tokenList = new LinkedList<String>();
+        for(String t : tokens) tokenList.add(t);
+        return parse(tokenList.listIterator());
     }
 
     @Override
-    public void operate(String[] tokens) {
-
-    }
-
-    /**
-     * Parses a string, and executes the related command.
-     * @param  string the string to be parsed.
-     */
-    public void operate(String string){
-        operate(string.split(" "));
+    protected void initializeMatchers() {
+        getPatternMatchers().add(new MetaCategoryPatternMatcher(this));
     }
 }
