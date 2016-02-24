@@ -3,5 +3,4 @@ jdk:
   - oraclejdk8
 
 after_success:
-  - ./gradlew build jacocoTestReport
-  - bash <(curl -s https://codecov.io/bash)
+  - ./gradlew build jacocoTestReport && bash <(curl -s https://codecov.io/bash)
