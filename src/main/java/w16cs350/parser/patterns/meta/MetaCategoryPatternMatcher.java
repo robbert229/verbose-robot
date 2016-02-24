@@ -1,7 +1,7 @@
 package w16cs350.parser.patterns.meta;
 
-import w16cs350.parser.A_NonIteratingPatternMatcher;
-import w16cs350.parser.A_PatternMatcher;
+import w16cs350.parser.patterns.A_NonIteratingPatternMatcher;
+import w16cs350.parser.patterns.A_PatternMatcher;
 
 /**
  * Created by RowleyJohn on 2/23/2016.
@@ -16,5 +16,6 @@ public class MetaCategoryPatternMatcher extends A_NonIteratingPatternMatcher {
         getPatternMatchers().add(new SyncViewPatternMatcher(this));
         getPatternMatchers().add(new CloseViewPatternMatcher(this));
         getPatternMatchers().add(new WaitPatternMatcher(this));
+        getPatternMatchers().add(new UsePatternMatcher(this));
     }
 }

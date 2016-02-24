@@ -1,4 +1,4 @@
-package w16cs350.parser;
+package w16cs350.parser.patterns;
 
 import w16cs350.controller.command.A_Command;
 
