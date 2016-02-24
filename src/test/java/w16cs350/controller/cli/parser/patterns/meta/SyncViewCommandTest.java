@@ -1,12 +1,10 @@
-package w16cs350.parser.patterns.meta;
+package w16cs350.controller.cli.parser.patterns.meta;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
+import w16cs350.controller.cli.parser.CommandParser;
+import w16cs350.controller.cli.parser.ParserFactory;
 import w16cs350.controller.command.A_Command;
-import w16cs350.controller.command.meta.A_CommandMetaView;
 import w16cs350.controller.command.meta.CommandMetaViewSync;
-import w16cs350.parser.Parser;
 
 import static org.junit.Assert.*;
 
@@ -17,8 +15,8 @@ public class SyncViewCommandTest {
 
     @Test
     public void test() throws Exception {
-        Parser p = new Parser();
-        A_Command c = p.parse("SYNC VIEW VIEWID NORTH ON STOCKID");
+        CommandParser p = new CommandParser(ParserFactory.buildHelper(), "SYNC VIEW VIEWID NORTH ON STOCKID");
+        A_Command c = p.parseCommand();
         assertTrue(c instanceof CommandMetaViewSync);
         CommandMetaViewSync command = (CommandMetaViewSync)c;
         assertEquals("STOCKID", command.getIDStock());
@@ -28,8 +26,8 @@ public class SyncViewCommandTest {
 
     @Test
     public void test2() throws Exception {
-        Parser p = new Parser();
-        A_Command c = p.parse("SYNC VIEW VIEWID TRACK ON STOCKID");
+        CommandParser p = new CommandParser(ParserFactory.buildHelper(), "SYNC VIEW VIEWID TRACK ON STOCKID");
+        A_Command c = p.parseCommand();
         assertTrue(c instanceof CommandMetaViewSync);
         CommandMetaViewSync command = (CommandMetaViewSync)c;
         assertEquals("STOCKID", command.getIDStock());

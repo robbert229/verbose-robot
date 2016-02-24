@@ -1,9 +1,9 @@
-package w16cs350.parser.patterns.meta;
+package w16cs350.controller.cli.parser.patterns.meta;
 
 import w16cs350.controller.command.A_Command;
 import w16cs350.controller.command.meta.CommandMetaViewSync;
-import w16cs350.parser.patterns.A_IteratingPatternMatcher;
-import w16cs350.parser.patterns.A_PatternMatcher;
+import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
+import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
 
 import java.util.ListIterator;
 

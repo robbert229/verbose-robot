@@ -1,8 +1,6 @@
-package w16cs350.parser;
+package w16cs350.controller.cli.parser;
 
 import w16cs350.datatype.CoordinatesWorld;
-
-import java.util.HashMap;
 
 /**
  * Created by RowleyJohn on 2/23/2016.
@@ -12,10 +10,10 @@ import java.util.HashMap;
  * A Key-Value store containing variables that different pattern matcher nodes might need.
  */
 public class VariableStore {
-    private HashMap<String, CoordinatesWorld> coordinatesWorldHashMap;
+    private A_ParserHelper _helper;
 
-    public VariableStore(){
-        coordinatesWorldHashMap = new HashMap<String, CoordinatesWorld>();
+    public VariableStore(A_ParserHelper helper){
+        _helper = helper;
     }
 
     /**
@@ -24,7 +22,7 @@ public class VariableStore {
      * @return
      */
     public CoordinatesWorld get(String id){
-        return coordinatesWorldHashMap.get(id);
+        return _helper.getReference(id);
     }
 
     /**
@@ -33,8 +31,6 @@ public class VariableStore {
      * @param coordinates The CoordinatesWorld to be placed in the store.
      */
     public void set(String id, CoordinatesWorld coordinates){
-        if(coordinatesWorldHashMap.containsKey(id))
-            throw new RuntimeException("CoordinatesWorld with key: " + id + " already exists in variable store");
-        coordinatesWorldHashMap.put(id, coordinates);
+        _helper.addReference(id, coordinates);
     }
 }

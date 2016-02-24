@@ -1,4 +1,4 @@
-package w16cs350.parser.patterns;
+package w16cs350.controller.cli.parser.patterns;
 
 import java.util.ListIterator;
 
