@@ -1,11 +1,5 @@
 language: java
-
-sudo: false
-
-os:
-  - linux
-
-before_install:
-  - pip install codecov
+jdk:
+  - oraclejdk8
 after_success:
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
