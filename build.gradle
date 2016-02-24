@@ -2,7 +2,9 @@ group 'cscd350team5'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
+version = '0.0.1'
 sourceCompatibility = 1.5
 
 repositories {
@@ -14,3 +16,11 @@ dependencies {
     runtime files('libs/cs350-jar-0_1.jar')
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+check.dependsOn jacocoTestReport
