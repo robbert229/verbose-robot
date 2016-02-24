@@ -21,7 +21,7 @@ public class UsePatternMatcher extends A_IteratingPatternMatcher {
         String token = tok.next();
         tok.previous();
 
-        return token.equals(tok);
+        return token.equals("USE");
     }
 
     @Override
@@ -35,6 +35,7 @@ public class UsePatternMatcher extends A_IteratingPatternMatcher {
         VariableStore store = root.getVariableStore();
 
         String id = tokens.next();
+        String raw = tokens.next();
         CoordinatesWorld world = PrimitiveDeserializer.parseWorldCoordinates(tokens);
 
         store.set(id,world);

@@ -5,6 +5,7 @@ import w16cs350.parser.patterns.A_NonIteratingPatternMatcher;
 import w16cs350.parser.patterns.meta.MetaCategoryPatternMatcher;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 /**
  * Created by johnrowleyster on 2/23/16.
@@ -23,10 +24,14 @@ public class Parser extends A_NonIteratingPatternMatcher {
     }
 
     public A_Command parse(String line){
-        String[] tokens = line.split(" ");
+        return parse(getIteratorFromString(line));
+    }
+
+    public static ListIterator<String> getIteratorFromString(String string){
+        String[] tokens = string.split(" ");
         LinkedList<String> tokenList = new LinkedList<String>();
         for(String t : tokens) tokenList.add(t);
-        return parse(tokenList.listIterator());
+        return tokenList.listIterator();
     }
 
     @Override
