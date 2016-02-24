@@ -1,4 +1,4 @@
-package w16cs350.parser;
+package w16cs350.parser.patterns.meta;
 
 import org.junit.After;
 import org.junit.Before;
@@ -6,6 +6,7 @@ import org.junit.Test;
 import w16cs350.controller.command.A_Command;
 import w16cs350.controller.command.meta.A_CommandMetaView;
 import w16cs350.controller.command.meta.CommandMetaViewSync;
+import w16cs350.parser.Parser;
 
 import static org.junit.Assert.*;
 

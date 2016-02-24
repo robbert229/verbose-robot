@@ -1,0 +1,6 @@
+machine:
+  java:
+    version: oraclejk8
+  test:
+    post:
+      - ./gradlew build jacocoTestReport && bash <(curl -s https://codecov.io/bash)

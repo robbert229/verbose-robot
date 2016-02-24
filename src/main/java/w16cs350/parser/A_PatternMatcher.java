@@ -53,7 +53,7 @@ public abstract class A_PatternMatcher {
      * @param tok The token to be processed.
      * @return Returns true if this pattern matcher can process the token.
      */
-    protected abstract boolean isMatch(String tok);
+    protected abstract boolean isMatch(ListIterator<String> tok);
 
     /**
      * Adds all of the patternMatchers to the patternMatcher list (called from constructor)
@@ -98,7 +98,7 @@ public abstract class A_PatternMatcher {
         for(int i = 0; i < patternMatchers.size(); i++){
             A_PatternMatcher pattern = patternMatchers.get(i);
 
-            if(pattern.isMatch(next)){
+            if(pattern.isMatch(iterator)){
                 return pattern.parse(iterator);
             }
         }

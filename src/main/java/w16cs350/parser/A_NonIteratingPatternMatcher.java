@@ -25,7 +25,7 @@ public abstract class A_NonIteratingPatternMatcher extends A_PatternMatcher {
      * @return True if the token mathces a child, False otherwise.
      */
     @Override
-    protected final boolean isMatch(String tok) {
+    protected final boolean isMatch(ListIterator<String> tok) {
         for(A_PatternMatcher m : getPatternMatchers()){
             if(m.isMatch(tok))
                 return true;

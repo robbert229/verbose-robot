@@ -1,7 +1,7 @@
 package w16cs350.parser.patterns.meta;
 
 import w16cs350.controller.command.A_Command;
-import w16cs350.controller.command.meta.CommandMetaViewSync;
+import w16cs350.controller.command.meta.CommandMetaViewDestroy;
 import w16cs350.parser.A_IteratingPatternMatcher;
 import w16cs350.parser.A_PatternMatcher;
 
@@ -10,8 +10,8 @@ import java.util.ListIterator;
 /**
  * Created by RowleyJohn on 2/23/2016.
  */
-public class SyncViewPatternMatcher extends A_IteratingPatternMatcher {
-    public SyncViewPatternMatcher(A_PatternMatcher parent) {
+public class CloseViewPatternMatcher extends A_IteratingPatternMatcher{
+    public CloseViewPatternMatcher(A_PatternMatcher parent) {
         super(parent);
     }
 
@@ -20,7 +20,7 @@ public class SyncViewPatternMatcher extends A_IteratingPatternMatcher {
         String token = tokens.next();
         tokens.previous();
 
-        return token.equals("SYNC");
+        return token.equals("CLOSE");
     }
 
     @Override
@@ -30,13 +30,8 @@ public class SyncViewPatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        assert(tokens.next().equals("VIEW")); // Remove View
-        String viewId = tokens.next();
-        boolean isNorthElseTrack = tokens.next().equals("NORTH");
-        tokens.next(); // Remove ON
-        String stockId = tokens.next();
-
-        return new CommandMetaViewSync(viewId, stockId, isNorthElseTrack);
+        assert(tokens.next().equals("VIEW"));
+        return new CommandMetaViewDestroy(tokens.next());
     }
 
     @Override
