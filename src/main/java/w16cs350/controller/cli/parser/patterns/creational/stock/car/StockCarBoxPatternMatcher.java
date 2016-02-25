@@ -31,6 +31,6 @@ public class StockCarBoxPatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected boolean isLeaf() {
-        return false;
+        return true;
     }
 }
