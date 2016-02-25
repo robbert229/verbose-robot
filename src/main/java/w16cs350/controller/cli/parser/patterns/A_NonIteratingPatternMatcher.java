@@ -49,7 +49,7 @@ public abstract class A_NonIteratingPatternMatcher extends A_PatternMatcher {
      * @return Returns false.
      */
     @Override
-    protected final boolean isLeaf() {
+    protected boolean isLeaf() {
         return false;
     }
 
