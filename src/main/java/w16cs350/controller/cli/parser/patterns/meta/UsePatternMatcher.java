@@ -1,11 +1,14 @@
 package w16cs350.controller.cli.parser.patterns.meta;
 
-import w16cs350.controller.cli.parser.*;
-import w16cs350.controller.command.A_Command;
-import w16cs350.datatype.CoordinatesWorld;
+import w16cs350.controller.cli.parser.A_ParserHelper;
+import w16cs350.controller.cli.parser.CommandParser;
+import w16cs350.controller.cli.parser.EmptyCommand;
+import w16cs350.controller.cli.parser.PrimitiveDeserializer;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
 import w16cs350.support.Assert;
+import w16cs350.controller.command.A_Command;
+import w16cs350.datatype.CoordinatesWorld;
 
 import java.util.ListIterator;
 

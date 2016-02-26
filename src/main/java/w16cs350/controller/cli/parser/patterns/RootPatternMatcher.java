@@ -1,5 +1,6 @@
 package w16cs350.controller.cli.parser.patterns;
 
+import w16cs350.controller.cli.parser.patterns.behavioral.BehavioralPatternmatcher;
 import w16cs350.controller.cli.parser.patterns.meta.MetaCategoryPatternMatcher;
 
 /**
@@ -13,5 +14,6 @@ public class RootPatternMatcher extends A_NonIteratingPatternMatcher {
     @Override
     protected void initializeMatchers() {
         getPatternMatchers().add(new MetaCategoryPatternMatcher(this));
+        getPatternMatchers().add(new BehavioralPatternmatcher(this));
     }
 }
