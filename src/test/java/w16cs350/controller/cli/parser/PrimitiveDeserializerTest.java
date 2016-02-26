@@ -65,4 +65,33 @@ public class PrimitiveDeserializerTest {
         Assert.assertTrue("delta: " + delta + ", is greater than distance: " + distance, distance < delta);
 
     }
+
+    @Test
+    public void testIsNextLatitudeLongitude() throws Exception {
+        String latitude = "10*20'10\"";
+        Assert.assertTrue(latitude + " isn't a valid latitude",
+                PrimitiveDeserializer.isNextLatitudeLongitude(CommandParser.getIteratorFromString(latitude)));
+    }
+
+    @Test
+    public void testIsNextCoordinatesWorld() throws Exception {
+        String latitude = "10*20'10\"";
+        String coordinates = latitude + " / " + latitude;
+        Assert.assertTrue(coordinates + " isn't a valid CoordinatesWorld",
+                PrimitiveDeserializer.isNextCoordinatesWorld(CommandParser.getIteratorFromString(coordinates)));
+    }
+
+    @Test
+    public void testIsNextAngle() throws Exception {
+        String angle = "234.0";
+        Assert.assertTrue(PrimitiveDeserializer.isNextAngle(CommandParser.getIteratorFromString(angle)));
+    }
+
+    @Test
+    public void testIsNextAngleException() throws Exception {
+        Assert.assertFalse(PrimitiveDeserializer.isNextAngle(CommandParser.getIteratorFromString("124.0fo")));
+
+    }
+
+
 }

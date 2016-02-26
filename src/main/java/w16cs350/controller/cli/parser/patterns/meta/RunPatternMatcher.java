@@ -1,18 +1,17 @@
 package w16cs350.controller.cli.parser.patterns.meta;
 
-import w16cs350.controller.command.A_Command;
-import w16cs350.controller.command.meta.CommandMetaDoWait;
-import w16cs350.controller.timing.Time;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
+import w16cs350.controller.command.A_Command;
+import w16cs350.controller.command.meta.CommandMetaDoRun;
 
 import java.util.ListIterator;
 
 /**
- * Created by RowleyJohn on 2/23/2016.
+ * Created by RowleyJohn on 2/24/2016.
  */
-public class WaitPatternMatcher extends A_IteratingPatternMatcher{
-    public WaitPatternMatcher(A_PatternMatcher parent) {
+public class RunPatternMatcher extends A_IteratingPatternMatcher {
+    public RunPatternMatcher(A_PatternMatcher parent) {
         super(parent);
     }
 
@@ -21,7 +20,7 @@ public class WaitPatternMatcher extends A_IteratingPatternMatcher{
         String token = tok.next();
         tok.previous();
 
-        return token.equals("@WAIT");
+        return token.equals("@RUN");
     }
 
     @Override
@@ -31,9 +30,7 @@ public class WaitPatternMatcher extends A_IteratingPatternMatcher{
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        String token = tokens.next();
-        Long time = Long.parseLong(token);
-        return new CommandMetaDoWait(new Time(time));
+        return new CommandMetaDoRun(tokens.next());
     }
 
     @Override

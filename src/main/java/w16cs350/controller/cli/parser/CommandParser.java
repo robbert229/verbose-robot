@@ -1,6 +1,7 @@
 package w16cs350.controller.cli.parser;
 
 import w16cs350.controller.cli.parser.patterns.A_NonIteratingPatternMatcher;
+import w16cs350.controller.cli.parser.patterns.RootPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.meta.MetaCategoryPatternMatcher;
 import w16cs350.controller.command.A_Command;
 
@@ -23,14 +24,6 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
 
         this.helper = helper;
         this.line = line;
-    }
-
-    /**
-     * Returns the variables store used to keep track of all C DEFINE like operations
-     * @return The variable store
-     */
-    public A_ParserHelper getHelper(){
-        return helper;
     }
 
     /**
@@ -62,6 +55,11 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
 
     @Override
     protected void initializeMatchers() {
-        getPatternMatchers().add(new MetaCategoryPatternMatcher(this));
+        getPatternMatchers().add(new RootPatternMatcher(this));
+    }
+
+    @Override
+    public A_ParserHelper getParserHelper(){
+        return helper;
     }
 }

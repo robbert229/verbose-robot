@@ -4,6 +4,7 @@ import w16cs350.controller.command.A_Command;
 import w16cs350.controller.command.meta.CommandMetaViewDestroy;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
+import w16cs350.support.Assert;
 
 import java.util.ListIterator;
 
@@ -30,7 +31,7 @@ public class CloseViewPatternMatcher extends A_IteratingPatternMatcher{
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        assert(tokens.next().equals("VIEW"));
+        Assert.isTrue(tokens.next().equals("VIEW"), "Token should be VIEW");
         return new CommandMetaViewDestroy(tokens.next());
     }
 
