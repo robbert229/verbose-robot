@@ -3,6 +3,8 @@ package w16cs350.controller.cli.parser.patterns.creational.stock.car;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
 import w16cs350.controller.command.A_Command;
+import w16cs350.controller.command.creational.CommandCreateStockCarBox;
+import w16cs350.support.Assert;
 
 import java.util.ListIterator;
 
@@ -14,19 +16,25 @@ public class StockCarBoxPatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected boolean isMatch(ListIterator<String> tok) {
-        String token = tok.next();
+        String idToken = tok.next();
+        String asToken = tok.next();
+        Assert.isTrue(asToken.equals("AS"), "Incorrect input: StockCarBox");
+        String carType = tok.next();
         tok.previous();
-        return token.equals("BOX");
+        tok.previous();
+        tok.previous();
+        return carType.equals("BOX");
     }
 
     @Override
     protected void initializeMatchers() {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        return null;
+        String idToken = tokens.next();
+        return new CommandCreateStockCarBox(idToken);
     }
 
     @Override
