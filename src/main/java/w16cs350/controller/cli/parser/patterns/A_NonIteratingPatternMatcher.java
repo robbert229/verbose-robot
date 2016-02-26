@@ -26,14 +26,9 @@ public abstract class A_NonIteratingPatternMatcher extends A_PatternMatcher {
      */
     @Override
     protected final boolean isMatch(ListIterator<String> tok) {
-        for(A_PatternMatcher m : getPatternMatchers()){
-            if(m.isMatch(tok))
-                return true;
-        }
-
-        return false;
+        return getPatternMatchers().stream()
+                .anyMatch(T -> T.isMatch(tok));
     }
-
     /**
      * Throws an exception.
      * @param tokens Used as parameters for commands.
@@ -49,7 +44,7 @@ public abstract class A_NonIteratingPatternMatcher extends A_PatternMatcher {
      * @return Returns false.
      */
     @Override
-    protected boolean isLeaf() {
+    protected final boolean isLeaf() {
         return false;
     }
 

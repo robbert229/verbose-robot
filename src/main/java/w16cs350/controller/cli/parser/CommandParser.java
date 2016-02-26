@@ -1,19 +1,16 @@
 package w16cs350.controller.cli.parser;
 
-import w16cs350.controller.cli.parser.behavioral.BrakePatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_NonIteratingPatternMatcher;
+import w16cs350.controller.cli.parser.patterns.behavioral.BehavioralPatternmatcher;
 import w16cs350.controller.cli.parser.patterns.meta.MetaCategoryPatternMatcher;
 import w16cs350.controller.command.A_Command;
 
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 /**
  * Created by johnrowleyster on 2/23/16.
- *
  */
 
 /**
@@ -37,9 +34,7 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
      */
     public static ListIterator<String> getIteratorFromString(String string) {
         String[] tokens = string.split(" ");
-        final List<String> tokenList = new LinkedList<>();
-        Arrays.stream(tokens).collect(Collectors.toCollection(() -> tokenList));
-        return tokenList.listIterator();
+        return Arrays.stream(tokens).collect(Collectors.toList()).listIterator();
     }
 
     /**
@@ -68,6 +63,6 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
     @Override
     protected void initializeMatchers() {
         getPatternMatchers().add(new MetaCategoryPatternMatcher(this));
-        getPatternMatchers().add(new BrakePatternMatcher(this));
+        getPatternMatchers().add(new BehavioralPatternmatcher(this));
     }
 }
