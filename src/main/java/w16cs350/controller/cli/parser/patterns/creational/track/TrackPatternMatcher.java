@@ -2,6 +2,8 @@ package w16cs350.controller.cli.parser.patterns.creational.track;
 
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
+import w16cs350.controller.cli.parser.patterns.creational.track.bridge.TrackBridgePatternMatcher;
+import w16cs350.controller.cli.parser.patterns.creational.track.switches.TrackSwitchPatternMatcher;
 import w16cs350.controller.command.A_Command;
 
 import java.util.ListIterator;
@@ -21,12 +23,20 @@ public class TrackPatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected void initializeMatchers() {
-
+        getPatternMatchers().add(new TrackBridgePatternMatcher(this));
+        getPatternMatchers().add(new TrackSwitchPatternMatcher(this));
+        getPatternMatchers().add(new TrackCrossingPatternMatcher(this));
+        getPatternMatchers().add(new TrackCrossoverPatternMatcher(this));
+        getPatternMatchers().add(new TrackCurvePatternMatcher(this));
+        getPatternMatchers().add(new TrackEndPatternMatcher(this));
+        getPatternMatchers().add(new TrackLayoutPatternMatcher(this));
+        getPatternMatchers().add(new TrackRoundhousePatternMatcher(this));
+        getPatternMatchers().add(new TrackStraightPatternMatcher(this));
     }
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
