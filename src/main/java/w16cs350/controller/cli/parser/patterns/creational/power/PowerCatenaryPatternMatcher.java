@@ -19,6 +19,7 @@ public class PowerCatenaryPatternMatcher extends A_IteratingPatternMatcher{
     @Override
     protected boolean isMatch(ListIterator<String> tok) {
         String token = tok.next();
+        tok.previous();
         return token.equals("CATENARY");
     }
 
