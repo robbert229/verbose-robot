@@ -1,6 +1,7 @@
 package w16cs350.controller.cli.parser.patterns.creational;
 
 import org.junit.Test;
+import w16cs350.controller.cli.TrackLocator;
 import w16cs350.controller.cli.parser.CommandParser;
 import w16cs350.controller.cli.parser.ParserFactory;
 import w16cs350.controller.command.A_Command;
@@ -63,5 +64,19 @@ public class StockTest {
         Assert.isTrue(c instanceof CommandCreateStockCarTender, "StockCarTender test fail");
         CommandCreateStockCarTender cmd = (CommandCreateStockCarTender) c;
         Assert.isTrue(cmd.getID().equals("car1"), "StockCarTender test fail");
+    }
+
+    @Test
+    public void testStockEngineDiesel() throws Exception{
+        CommandParser p = new CommandParser(ParserFactory.buildHelper(), "CREATE STOCK ENGINE car1 AS DIESEL ON TRACK track1 DISTANCE 100 FROM START FACING START");
+        A_Command c = p.parseCommand();
+        Assert.isTrue(c instanceof CommandCreateStockEngineDiesel, "StockEngineDiesel class type test fail");
+        CommandCreateStockEngineDiesel cmd = (CommandCreateStockEngineDiesel) c;
+        Assert.isTrue(cmd.getID().equals("car1"), "StockEngineDiesel id test fail");
+        Assert.isTrue(cmd.isFacingStartElseEnd(), "StockEngineDiesel isFacingStartElseEnd test fail");
+        TrackLocator tl = cmd.getLocator();
+        Assert.isTrue(tl.getTrackID().equals("track1"), "StockEngineDiesel track id test fail");
+        Assert.isTrue(tl.getDistance() == 100, "StockEngineDiesel track distance test fail");
+        Assert.isTrue(tl.isFromAElseB(), "StockEngineDiesel track fromAElseB test fail");
     }
 }

@@ -36,7 +36,8 @@ public class StockEngineDieselPatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        String engineIDToken = tokens.next();
+        String engineIDToken = tokens.previous();
+        tokens.next();
         tokens.next(); //AS
         tokens.next(); //DIESEL
         TrackLocator tl = parseTrackLocator(tokens);
