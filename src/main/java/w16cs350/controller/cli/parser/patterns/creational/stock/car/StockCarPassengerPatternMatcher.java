@@ -3,6 +3,7 @@ package w16cs350.controller.cli.parser.patterns.creational.stock.car;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
 import w16cs350.controller.command.A_Command;
+import w16cs350.controller.command.creational.CommandCreateStockCarPassenger;
 import w16cs350.support.Assert;
 
 import java.util.ListIterator;
@@ -17,7 +18,7 @@ public class StockCarPassengerPatternMatcher extends A_IteratingPatternMatcher {
     protected boolean isMatch(ListIterator<String> tok) {
         String idToken = tok.next();
         String asToken = tok.next();
-        Assert.isTrue(asToken.equals("AS"), "Incorrect input: StockCarPassenger");
+        Assert.isTrue(asToken.equals("AS"), "Incorrect input, expected: AS");
         String carType = tok.next();
         tok.previous();
         tok.previous();
@@ -32,7 +33,8 @@ public class StockCarPassengerPatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        return null;
+        String idToken = tokens.previous(); //iterated over the id, need to step back
+        return new CommandCreateStockCarPassenger(idToken);
     }
 
     @Override

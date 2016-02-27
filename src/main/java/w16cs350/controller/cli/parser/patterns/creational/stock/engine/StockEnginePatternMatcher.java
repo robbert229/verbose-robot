@@ -2,7 +2,6 @@ package w16cs350.controller.cli.parser.patterns.creational.stock.engine;
 
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
-import w16cs350.controller.cli.parser.patterns.creational.stock.car.*;
 import w16cs350.controller.command.A_Command;
 
 import java.util.ListIterator;

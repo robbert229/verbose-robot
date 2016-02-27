@@ -18,7 +18,7 @@ public class StockCarCaboosePatternMatcher extends A_IteratingPatternMatcher {
     protected boolean isMatch(ListIterator<String> tok) {
         String idToken = tok.next();
         String asToken = tok.next();
-        Assert.isTrue(asToken.equals("AS"), "Incorrect input: StockCarCaboose");
+        Assert.isTrue(asToken.equals("AS"), "Incorrect input, expected: AS");
         String carType = tok.next();
         tok.previous();
         tok.previous();
@@ -33,7 +33,7 @@ public class StockCarCaboosePatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        String idToken = tokens.next();
+        String idToken = tokens.previous(); //iterated over the id, need to step back
         return new CommandCreateStockCarCaboose(idToken);
     }
 
