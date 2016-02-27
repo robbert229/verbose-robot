@@ -21,7 +21,7 @@ public class DirectionPatternMatcher_TEST {
         assertTrue(command instanceof CommandBehavioralSetDirection);
     }
 
-    @Test
+   @Test
     public void test_PatternMatch2() throws Exception {
         CommandParser commandParser = new CommandParser(ParserFactory.buildHelper(), "DO SET tesssst DIRECTION BACKWARD");
         A_Command command = commandParser.parseCommand();

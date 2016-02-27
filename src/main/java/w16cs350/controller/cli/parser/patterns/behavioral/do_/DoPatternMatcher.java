@@ -1,13 +1,12 @@
 package w16cs350.controller.cli.parser.patterns.behavioral.do_;
 
 import w16cs350.controller.cli.parser.EmptyCommand;
-import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
+import w16cs350.controller.cli.parser.patterns.A_SubPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.behavioral.do_.brake.BrakePatternMatcher;
 import w16cs350.controller.cli.parser.patterns.behavioral.do_.select.SelectPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.behavioral.do_.set.SetPatternMatcher;
 import w16cs350.controller.command.A_Command;
-import w16cs350.support.Assert;
 
 import java.util.ListIterator;
 
@@ -15,24 +14,23 @@ import java.util.ListIterator;
  * Utility methods to recognize and hand off the "DO" commands
  *
  * @author Josh Cotes
- * @version 1.0
+ * @version 1.1
  */
-public class DoPatternMatcher extends A_IteratingPatternMatcher {
+public class DoPatternMatcher extends A_SubPatternMatcher {
 
     /**
-     * Constructor builds from the parent class
+     * Constructor initializes the pattern matcher using the parent class
      *
      * @param parent - The parent class
      */
     public DoPatternMatcher(A_PatternMatcher parent) {
-        super(parent);
+        super(parent, "DO");
     }
 
     @Override
     protected boolean isMatch(ListIterator<String> tokens) {
-        String token = tokens.next();
-        tokens.previous();
-        return token.equals("DO");
+        _tokensSet(tokens, null);
+        return peekNextToken("matching tokens").equals("DO");
     }
 
     @Override
@@ -45,7 +43,8 @@ public class DoPatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        Assert.isTrue(tokens.hasNext(), "user input error - DO pattern matcher");
+        _tokensSet(tokens, null);
+        nextToken("confirming next token exists");
         return new EmptyCommand();
     }
 

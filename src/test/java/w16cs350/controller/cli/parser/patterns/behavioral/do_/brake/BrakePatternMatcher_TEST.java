@@ -15,7 +15,7 @@ public class BrakePatternMatcher_TEST {
 
     @Test
     public void test_PatternMatch() throws Exception {
-        CommandParser commandParser = new CommandParser(ParserFactory.buildHelper(), "DO BRAKE locomotiveOne");
+        CommandParser commandParser = new CommandParser(ParserFactory.buildHelper(), "DO BRAKE shab");
         A_Command command = commandParser.parseCommand();
         assertTrue(command instanceof CommandBehavioralBrake);
     }

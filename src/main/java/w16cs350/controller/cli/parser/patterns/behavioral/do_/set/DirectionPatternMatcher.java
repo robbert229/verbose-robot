@@ -1,7 +1,7 @@
 package w16cs350.controller.cli.parser.patterns.behavioral.do_.set;
 
-import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
+import w16cs350.controller.cli.parser.patterns.A_SubPatternMatcher;
 import w16cs350.controller.command.A_Command;
 import w16cs350.controller.command.behavioral.CommandBehavioralSetDirection;
 import w16cs350.support.Assert;
@@ -12,55 +12,36 @@ import java.util.ListIterator;
  * Utility methods to recognize and hand off the "id DIRECTION" commands
  *
  * @author Josh Cotes
- * @version 1.0
+ * @version 1.1
  */
-public class DirectionPatternMatcher extends A_IteratingPatternMatcher {
-    private static String errorString = "user input error \"DIRECTION\" pattern matcher";
+public class DirectionPatternMatcher extends A_SubPatternMatcher {
 
     /**
-     * Constructor builds from the parent class
+     * Constructor initializes the pattern matcher using the parent class
      *
      * @param parent - The parent class
      */
     public DirectionPatternMatcher(A_PatternMatcher parent) {
-        super(parent);
-    }
-
-    @Override
-    protected void initializeMatchers() {
-        throw new UnsupportedOperationException();
+        super(parent, "DIRECTION");
     }
 
     @Override
     protected boolean isMatch(ListIterator<String> tokens) {
-        Assert.isTrue(tokens.hasNext(), errorString);
-        tokens.next();
-        Assert.isTrue(tokens.hasNext(), errorString);
-        String token = tokens.next();
-        tokens.previous();
-        tokens.previous();
-        return token.equals("DIRECTION");
+        _tokensSet(tokens, null);
+        nextToken("advance token");
+        return peekNextToken("matching token").equals("DIRECTION");
     }
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        Assert.isTrue(tokens.hasPrevious(), errorString);
-        String reference_id = tokens.previous();
-        Assert.isID(reference_id, errorString);
-        Assert.isTrue(tokens.hasNext(), errorString);
-        tokens.next();
-        Assert.isTrue(tokens.hasNext(), errorString);
-        Assert.isTrue(tokens.next().equals("DIRECTION"), errorString);
-        Assert.isTrue(tokens.hasNext(), errorString);
-        String direction = tokens.next();
+        _tokensSet(tokens, null);
+        previousToken("previous token");
+        String reference_id = getPreviousToken("reference idea (previous token)");
+        nextTokenIs("DIRECTION", "DIRECTION command");
+        String direction = getNextToken("direction");
         Assert.isTrue(direction.equals("FORWARD") ||
-                direction.equals("BACKWARD"), errorString);
+                direction.equals("BACKWARD"), buildError("expecting FORWARD or BACKWARD"));
 
         return new CommandBehavioralSetDirection(reference_id, direction.equals("FORWARD"));
-    }
-
-    @Override
-    protected boolean isLeaf() {
-        return true;
     }
 }
