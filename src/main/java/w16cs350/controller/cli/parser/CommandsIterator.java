@@ -1,5 +1,6 @@
 package w16cs350.controller.cli.parser;
 
+import w16cs350.Startup;
 import w16cs350.controller.ActionProcessor;
 import w16cs350.controller.Controller;
 import w16cs350.controller.cli.CommandLineInterface;
@@ -24,6 +25,7 @@ public class CommandsIterator extends A_NonIteratingPatternMatcher implements It
     private String _line;
     private A_ParserHelper _parserHelper;
     private int _position;
+    private Controller _controller;
 
     /**
      * Constructor initializes the iterator dependencies
@@ -33,9 +35,23 @@ public class CommandsIterator extends A_NonIteratingPatternMatcher implements It
     public CommandsIterator(String line) {
         super(null);
         this._line = line;
+        _position = 0;
+        _controller = new Controller();
         initializeSessionParserHelper();
         buildList();
+         }
+
+    /**
+     * Constructor initializes the iterator dependencies
+     *
+     * @param line - The command line input
+     */
+    public CommandsIterator(String line, A_ParserHelper parserHelper) {
+        super(null);
+        this._line = line;
+        _parserHelper = parserHelper;
         _position = 0;
+        buildList();
     }
 
     /**
@@ -75,10 +91,9 @@ public class CommandsIterator extends A_NonIteratingPatternMatcher implements It
      * CommandParser is created new for each pattern
      */
     private void initializeSessionParserHelper() {
+
         _parserHelper = new MyParserHelper(
-                new ActionProcessor(
-                        new CommandLineInterface(
-                                new Controller())));
+                new ActionProcessor(_controller.getCommandLineInterface()));
     }
 
     @Override
@@ -95,5 +110,11 @@ public class CommandsIterator extends A_NonIteratingPatternMatcher implements It
      */
     public int remaining() {
         return _commands.size() - _position;
+    }
+
+    public void schedule(){
+        _commands.stream()
+                .forEach(C -> _parserHelper.getActionProcessor().schedule(C));
+        _controller.execute();
     }
 }

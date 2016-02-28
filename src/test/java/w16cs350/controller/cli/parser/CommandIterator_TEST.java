@@ -1,4 +1,4 @@
-package w16cs350.controller.cli.parser.patterns;
+package w16cs350.controller.cli.parser;
 
 import org.junit.*;
 import w16cs350.controller.cli.parser.CommandsIterator;
