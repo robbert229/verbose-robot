@@ -1,9 +1,9 @@
 package w16cs350.controller.cli.parser.patterns.meta;
 
-import w16cs350.controller.command.A_Command;
-import w16cs350.controller.command.meta.CommandMetaViewSync;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
+import w16cs350.controller.command.A_Command;
+import w16cs350.controller.command.meta.CommandMetaViewSync;
 
 import java.util.ListIterator;
 
@@ -19,7 +19,6 @@ public class SyncViewPatternMatcher extends A_IteratingPatternMatcher {
     protected boolean isMatch(ListIterator<String> tokens) {
         String token = tokens.next();
         tokens.previous();
-
         return token.equals("SYNC");
     }
 
@@ -35,7 +34,6 @@ public class SyncViewPatternMatcher extends A_IteratingPatternMatcher {
         boolean isNorthElseTrack = tokens.next().equals("NORTH");
         tokens.next(); // Remove ON
         String stockId = tokens.next();
-
         return new CommandMetaViewSync(viewId, stockId, isNorthElseTrack);
     }
 

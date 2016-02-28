@@ -1,10 +1,13 @@
 package w16cs350.controller.cli.parser.patterns.meta;
 
-import w16cs350.controller.cli.parser.*;
-import w16cs350.controller.command.A_Command;
-import w16cs350.datatype.CoordinatesWorld;
+import w16cs350.controller.cli.parser.A_ParserHelper;
+import w16cs350.controller.cli.parser.CommandParser;
+import w16cs350.controller.cli.parser.EmptyCommand;
+import w16cs350.controller.cli.parser.PrimitiveDeserializer;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
+import w16cs350.controller.command.A_Command;
+import w16cs350.datatype.CoordinatesWorld;
 
 import java.util.ListIterator;
 
@@ -31,8 +34,8 @@ public class UsePatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        CommandParser root = (CommandParser)getRoot();
-        A_ParserHelper store = root.getHelper();
+        CommandParser commandParser = (CommandParser) getRoot();
+        A_ParserHelper store = commandParser.getHelper();
 
         String id = tokens.next();
         String raw = tokens.next();
