@@ -1,13 +1,11 @@
-package w16cs350.controller.cli.parser.patterns;
+package w16cs350.controller.cli.parser;
 
 import org.junit.Test;
-import w16cs350.controller.cli.parser.CommandParser;
-import w16cs350.controller.cli.parser.ParserFactory;
 
 /**
  * Created by Josh on 2/27/2016.
  */
-public class CommandsSchedule_TEST {
+public class MultipleCommandParsing_TEST {
 
     @Test
     public void test_PatternMatch() throws Exception {
