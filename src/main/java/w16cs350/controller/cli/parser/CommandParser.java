@@ -45,11 +45,28 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
         return helper;
     }
 
+    @Override
+    protected void initializeMatchers() {
+        getPatternMatchers().add(new MetaCategoryPatternMatcher(this));
+        getPatternMatchers().add(new BehavioralPatternmatcher(this));
+    }
+
     /**
-     * Parses the line of text and schedules it for execution via the action processor.
+     * Parses the input string supporting multiple commands using the  ';' delimiter
      */
     public void parse() {
-        helper.getActionProcessor().schedule(parseCommand());
+        Arrays.stream(line.split(";"))
+                .map(this::parseCommand)
+                .forEach(this::schedule);
+    }
+
+    /**
+     * Parses the command, and returns the constructed command.
+     *
+     * @return The constructed command.
+     */
+    public A_Command parseCommand(String line) {
+        return parse(getIteratorFromString(line));
     }
 
     /**
@@ -60,9 +77,12 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
         return parse(getIteratorFromString(line));
     }
 
-    @Override
-    protected void initializeMatchers() {
-        getPatternMatchers().add(new MetaCategoryPatternMatcher(this));
-        getPatternMatchers().add(new BehavioralPatternmatcher(this));
+    /**
+     * schedule the command
+     *
+     * @param command - the command
+     */
+    private void schedule(A_Command command) {
+        helper.getActionProcessor().schedule(command);
     }
 }
