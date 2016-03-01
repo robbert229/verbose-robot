@@ -31,7 +31,7 @@ public class StockCarPatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override

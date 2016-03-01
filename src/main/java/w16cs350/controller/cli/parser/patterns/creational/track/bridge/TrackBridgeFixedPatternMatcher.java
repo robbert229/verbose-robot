@@ -1,8 +1,15 @@
 package w16cs350.controller.cli.parser.patterns.creational.track.bridge;
 
+import w16cs350.controller.cli.parser.CommandParser;
+import w16cs350.controller.cli.parser.PrimitiveDeserializer;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
 import w16cs350.controller.command.A_Command;
+import w16cs350.controller.command.PointLocator;
+import w16cs350.controller.command.creational.CommandCreateTrackBridgeDraw;
+import w16cs350.controller.command.creational.CommandCreateTrackBridgeFixed;
+import w16cs350.datatype.Angle;
+import w16cs350.support.Assert;
 
 import java.util.ListIterator;
 
@@ -30,7 +37,10 @@ public class TrackBridgeFixedPatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        return null;
+        String idToken  = tokens.next();
+        CommandParser root = (CommandParser) getRoot();
+        PointLocator pl = PrimitiveDeserializer.parsePointLocator(tokens, root.getHelper());
+        return new CommandCreateTrackBridgeFixed(idToken, pl);
     }
 
     @Override
