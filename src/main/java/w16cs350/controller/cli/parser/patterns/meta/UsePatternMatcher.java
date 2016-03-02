@@ -5,6 +5,7 @@ import w16cs350.controller.command.A_Command;
 import w16cs350.datatype.CoordinatesWorld;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
+import w16cs350.support.Assert;
 
 import java.util.ListIterator;
 
@@ -31,11 +32,12 @@ public class UsePatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        CommandParser root = (CommandParser)getRoot();
-        A_ParserHelper store = root.getHelper();
+        A_ParserHelper store = getParserHelper();
 
         String id = tokens.next();
-        String raw = tokens.next();
+        Assert.isTrue(tokens.next().equals("AS"), "Token should be AS");
+        Assert.isTrue(tokens.next().equals("REFERENCE"), "Token should be REFERENCE");
+
         CoordinatesWorld world = PrimitiveDeserializer.parseCoordinatesWorld(tokens);
 
         store.addReference(id, world);

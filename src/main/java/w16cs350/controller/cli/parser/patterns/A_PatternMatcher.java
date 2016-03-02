@@ -1,4 +1,5 @@
 package w16cs350.controller.cli.parser.patterns;
+import w16cs350.controller.cli.parser.A_ParserHelper;
 import w16cs350.controller.command.A_Command;
 
 import java.util.LinkedList;
@@ -26,18 +27,6 @@ public abstract class A_PatternMatcher {
      */
     public A_PatternMatcher getParent(){
         return parent;
-    }
-
-    /**
-     * Returns the root of the pattern matcher tree
-     * @return The root node of the tree
-     */
-    public A_PatternMatcher getRoot(){
-        A_PatternMatcher p = this;
-        while(p.getParent() != null)
-            p = p.getParent();
-
-        return p;
     }
 
     /**
@@ -103,6 +92,15 @@ public abstract class A_PatternMatcher {
 
         throw new RuntimeException("No PatternMatcher For Token: " + next);
     }
+
+    /**
+     * Returns the A_ParserHelper for this tree.
+     * @return A_ParserHelper
+     */
+    public A_ParserHelper getParserHelper(){
+        return getParent().getParserHelper();
+    }
+
 
     /**
      * called upon delegating a command to a child node. Is used in subclasses to rewind or fast-forward if needed.
