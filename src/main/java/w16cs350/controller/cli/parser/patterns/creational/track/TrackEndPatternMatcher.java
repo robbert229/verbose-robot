@@ -1,8 +1,12 @@
 package w16cs350.controller.cli.parser.patterns.creational.track;
 
+import w16cs350.controller.cli.parser.CommandParser;
+import w16cs350.controller.cli.parser.PrimitiveDeserializer;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
 import w16cs350.controller.command.A_Command;
+import w16cs350.controller.command.PointLocator;
+import w16cs350.controller.command.creational.CommandCreateTrackEnd;
 
 import java.util.ListIterator;
 
@@ -28,7 +32,11 @@ public class TrackEndPatternMatcher extends A_IteratingPatternMatcher{
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        return null;
+        String idToken = tokens.next();
+        CommandParser cp = (CommandParser) getRoot();
+        PointLocator pl = PrimitiveDeserializer.parsePointLocator(tokens, cp.getHelper());
+
+        return new CommandCreateTrackEnd(idToken, pl);
     }
 
     @Override

@@ -1,8 +1,14 @@
 package w16cs350.controller.cli.parser.patterns.creational.track;
 
+import w16cs350.controller.cli.parser.CommandParser;
+import w16cs350.controller.cli.parser.PrimitiveDeserializer;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
 import w16cs350.controller.command.A_Command;
+import w16cs350.controller.command.creational.CommandCreateTrackCurve;
+import w16cs350.datatype.CoordinatesDelta;
+import w16cs350.datatype.CoordinatesWorld;
+import w16cs350.support.Assert;
 
 import java.util.ListIterator;
 
@@ -26,9 +32,35 @@ public class TrackCurvePatternMatcher extends A_IteratingPatternMatcher{
         throw new UnsupportedOperationException();
     }
 
+    //CREATE TRACK CURVE id1 REFERENCE ( coordinates_world | ( '$' id2 ) ) DELTA START coordinates_delta1
+    // END coordinates_delta2 ( ( DISTANCE ORIGIN number ) | ( ORIGIN coordinates_delta3 ) )
+
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        return null;
+        String idToken = tokens.next();
+        CommandParser cp = (CommandParser) getRoot();
+        CoordinatesWorld reference = PrimitiveDeserializer.parseReference(tokens, cp.getHelper());
+
+        String startToken = tokens.next();
+        Assert.isTrue(startToken.equals("START"), "Incorrect input, expected: START");
+        CoordinatesDelta cdStart = PrimitiveDeserializer.parseCoordinatesDelta(tokens);
+
+        String endToken = tokens.next();
+        Assert.isTrue(endToken.equals("END"), "Incorrect input, expected: END");
+        CoordinatesDelta cdEnd = PrimitiveDeserializer.parseCoordinatesDelta(tokens);
+
+        String distance_or_origin = tokens.next();
+        Assert.isTrue(distance_or_origin.equals("DISTANCE") || distance_or_origin.equals("ORIGIN"), "Incorrect input, expected: DISTANCE or ORIGIN");
+        if(distance_or_origin.equals("DISTANCE")){
+            String originToken = tokens.next();
+            Assert.isTrue(originToken.equals("ORIGIN"), "Incorrect input, expected: ORIGIN");
+            double distance = Double.parseDouble(tokens.next());
+            return new CommandCreateTrackCurve(idToken, reference, cdStart, cdEnd, distance);
+        }
+        else{
+            CoordinatesDelta cdOrigin = PrimitiveDeserializer.parseCoordinatesDelta(tokens);
+            return new CommandCreateTrackCurve(idToken, reference, cdStart, cdEnd, cdOrigin);
+        }
     }
 
     @Override

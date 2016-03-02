@@ -43,6 +43,7 @@ public class PowerStationPatternMatcher extends A_IteratingPatternMatcher{
         String subStationToken = tokens.next();
         Assert.isTrue(subStationToken.equals("SUBSTATION") || subStationToken.equals("SUBSTATIONS"), "Incorrect input, expected: (SUBSTATION | SUBSTATIONS)");
         List<String> substationIDs = PrimitiveDeserializer.parserIDList(tokens);
+        Assert.isFalse(substationIDs.size() > 1 && subStationToken.equals("SUBSTATION"), "SUBSTATION takes 1 substation ID only");
         return new CommandCreatePowerStation(idToken, ref, cd, substationIDs);
     }
 
