@@ -1,7 +1,7 @@
 package w16cs350.controller.cli.parser.patterns.meta;
 
-import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
+import w16cs350.controller.cli.parser.patterns.A_SubPatternMatcher;
 import w16cs350.controller.command.A_Command;
 import w16cs350.controller.command.meta.CommandMetaDoExit;
 
@@ -10,17 +10,15 @@ import java.util.ListIterator;
 /**
  * Created by RowleyJohn on 2/24/2016.
  */
-public class ExitPatternMatcher extends A_IteratingPatternMatcher{
+public class ExitPatternMatcher extends A_SubPatternMatcher{
     public ExitPatternMatcher(A_PatternMatcher parent) {
-        super(parent);
+        super(parent, "@EXIT");
     }
 
     @Override
-    protected boolean isMatch(ListIterator<String> tok) {
-        String token = tok.next();
-        tok.previous();
-
-        return token.equals("@EXIT");
+    protected boolean isMatch(ListIterator<String> tokens) {
+        _tokensSet(tokens, null);
+        return peekNextToken("matching token").equals("@EXIT");
     }
 
     @Override

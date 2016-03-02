@@ -15,7 +15,7 @@ public abstract class A_PatternMatcher {
     private A_PatternMatcher parent;
 
     public A_PatternMatcher(A_PatternMatcher parent){
-        patternMatchers = new LinkedList<A_PatternMatcher>();
+        patternMatchers = new LinkedList<>();
         if(!isLeaf())
             initializeMatchers();
         this.parent = parent;
@@ -89,7 +89,6 @@ public abstract class A_PatternMatcher {
                 return pattern.parse(iterator);
             }
         }
-
         throw new RuntimeException("No PatternMatcher For Token: " + next);
     }
 
@@ -97,8 +96,8 @@ public abstract class A_PatternMatcher {
      * Returns the A_ParserHelper for this tree.
      * @return A_ParserHelper
      */
-    public A_ParserHelper getParserHelper(){
-        return getParent().getParserHelper();
+    public A_ParserHelper getHelper(){
+        return getParent().getHelper();
     }
 
 

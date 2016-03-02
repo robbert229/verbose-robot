@@ -1,8 +1,8 @@
 package w16cs350.controller.cli.parser.patterns.meta;
 
 import w16cs350.controller.cli.parser.PrimitiveDeserializer;
-import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
+import w16cs350.controller.cli.parser.patterns.A_SubPatternMatcher;
 import w16cs350.controller.command.A_Command;
 import w16cs350.controller.command.meta.CommandMetaViewGenerate;
 import w16cs350.datatype.CoordinatesScreen;
@@ -14,21 +14,18 @@ import java.util.ListIterator;
 /**
  * Created by RowleyJohn on 2/25/2016.
  */
-public class OpenViewPatternMatcher extends A_IteratingPatternMatcher {
+public class OpenViewPatternMatcher extends A_SubPatternMatcher {
 
     public OpenViewPatternMatcher(A_PatternMatcher parent) {
-        super(parent);
+        super(parent, "OPEN");
     }
 
     @Override
     protected boolean isMatch(ListIterator<String> tok) {
-        String open = tok.next();
-        String view = tok.next();
+        _tokensSet(tok, null);
+        return peekNextToken("matching OPEN").equals("OPEN") &&
+            peekNextNextToken("matching VIEW").equals("VIEW");
 
-        for(int i = 0; i < 2; i++)
-            tok.previous();
-
-        return open.equals("OPEN") && view.equals("VIEW");
     }
 
     @Override
@@ -38,31 +35,34 @@ public class OpenViewPatternMatcher extends A_IteratingPatternMatcher {
 
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
-        Assert.isTrue(tokens.next().equals("VIEW"), "Token should be VIEW");
-        String id = tokens.next();
-        Assert.isTrue(tokens.next().equals("ORIGIN"), "Token should be ORIGIN");
+        _tokensSet(tokens, null);
+
+
+        Assert.isTrue(getNextToken("matching VIEW").equals("VIEW"), "Token should be VIEW");
+        String id = getNextToken("matching ID");
+        Assert.isTrue(getNextToken("matching ORIGIN").equals("ORIGIN"), "Token should be ORIGIN");
 
         CoordinatesWorld coordinatesWorld;
         if(PrimitiveDeserializer.isNextCoordinatesWorld(tokens)){
             coordinatesWorld = PrimitiveDeserializer.parseCoordinatesWorld(tokens);
         } else {
-            coordinatesWorld = getParserHelper().getReference(tokens.next());
+            coordinatesWorld = getHelper().getReference(tokens.next());
             Assert.isNonnull(coordinatesWorld != null, "CoordinatesWorld shouldn't be NULL");
         }
 
-        Assert.isTrue(tokens.next().equals("WORLD"), "Token should be WORLD");
-        Assert.isTrue(tokens.next().equals("WIDTH"), "Token should be WIDTH");
+        Assert.isTrue(getNextToken("matching WORLD").equals("WORLD"), "Token should be WORLD");
+        Assert.isTrue(getNextToken("matching WIDTH").equals("WIDTH"), "Token should be WIDTH");
 
-        int worldWidth = Integer.parseInt(tokens.next());
+        int worldWidth = Integer.parseInt(getNextToken("matching worldWidth"));
 
-        Assert.isTrue(tokens.next().equals("SCREEN"), "Token should be SCREEN");
-        Assert.isTrue(tokens.next().equals("WIDTH"), "Token should be WIDTH");
+        Assert.isTrue(getNextToken("matching SCREEN").equals("SCREEN"), "Token should be SCREEN");
+        Assert.isTrue(getNextToken("matching WIDTH").equals("WIDTH"), "Token should be WIDTH");
 
-        int screenWidth = Integer.parseInt(tokens.next());
+        int screenWidth = Integer.parseInt(getNextToken("matching screenWidth"));
 
-        Assert.isTrue(tokens.next().equals("HEIGHT"), "Token should be HEIGHT");
+        Assert.isTrue(getNextToken("matching HEIGHT").equals("HEIGHT"), "Token should be HEIGHT");
 
-        int screenHeight = Integer.parseInt(tokens.next());
+        int screenHeight = Integer.parseInt(getNextToken("matching screenHeight"));
 
         return new CommandMetaViewGenerate(id, coordinatesWorld, worldWidth, new CoordinatesScreen(screenWidth, screenHeight));
     }

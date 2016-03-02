@@ -18,7 +18,7 @@ public class UsePatternMatcherTest {
         CommandParser p = new CommandParser(ParserFactory.buildHelper(), "USE HOME_COORDINATES AS REFERENCE 1*10'20\" / 2*20'40\"");
         A_Command c = p.parseCommand();
         CoordinatesWorld target = new CoordinatesWorld(new Latitude(1,10,20), new Longitude(2,20,40));
-        CoordinatesWorld attempt = p.getParserHelper().getReference("HOME_COORDINATES");
+        CoordinatesWorld attempt = p.getHelper().getReference("HOME_COORDINATES");
 
         double delta = .1;
         double distance = target.calculateDistanceMeters(attempt);
