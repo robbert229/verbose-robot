@@ -13,9 +13,11 @@ public class MetaCategoryPatternMatcher extends A_NonIteratingPatternMatcher {
 
     @Override
     protected void initializeMatchers() {
-        getPatternMatchers().add(new SyncViewPatternMatcher(this));
         getPatternMatchers().add(new CloseViewPatternMatcher(this));
-        getPatternMatchers().add(new WaitPatternMatcher(this));
         getPatternMatchers().add(new UsePatternMatcher(this));
+        getPatternMatchers().add(new ExitPatternMatcher(this));
+        getPatternMatchers().add(new RunPatternMatcher(this));
+        getPatternMatchers().add(new SchedulePatternMatcher(this));
+        getPatternMatchers().add(new OpenViewPatternMatcher(this));
     }
 }

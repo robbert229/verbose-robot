@@ -1,8 +1,7 @@
 package w16cs350.controller.cli.parser;
 
 import w16cs350.controller.cli.parser.patterns.A_NonIteratingPatternMatcher;
-import w16cs350.controller.cli.parser.patterns.behavioral.BehavioralPatternmatcher;
-import w16cs350.controller.cli.parser.patterns.meta.MetaCategoryPatternMatcher;
+import w16cs350.controller.cli.parser.patterns.RootPatternMatcher;
 import w16cs350.controller.command.A_Command;
 
 import java.util.Arrays;
@@ -47,8 +46,7 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
 
     @Override
     protected void initializeMatchers() {
-        getPatternMatchers().add(new MetaCategoryPatternMatcher(this));
-        getPatternMatchers().add(new BehavioralPatternmatcher(this));
+        getPatternMatchers().add(new RootPatternMatcher(this));
     }
 
     /**

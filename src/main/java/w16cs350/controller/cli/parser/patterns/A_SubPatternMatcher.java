@@ -1,10 +1,6 @@
 package w16cs350.controller.cli.parser.patterns;
 
-import w16cs350.controller.cli.parser.EmptyCommand;
-import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
-import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
-import w16cs350.controller.cli.parser.patterns.behavioral.do_.S_TokenTools;
-import w16cs350.controller.command.A_Command;
+import w16cs350.controller.cli.parser.S_TokenTools;
 
 import java.util.ListIterator;
 
@@ -31,22 +27,12 @@ public abstract class A_SubPatternMatcher extends A_IteratingPatternMatcher {
         tokenTools.setPattern(pattern);
     }
 
-    @Override
-    protected void initializeMatchers() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    protected boolean isLeaf() {
-        return true;
-    }
-
-    @Override
+    /*@Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
         _tokensSet(tokens, null);
         hasNextToken("check for next token");
         return new EmptyCommand();
-    }
+    }*/
 
     // Proxy method calls, see TokenTools///
     protected String buildError(String where, String error_postfix) {return tokenTools.buildError(where, error_postfix);}

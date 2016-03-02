@@ -2,7 +2,6 @@ package w16cs350.controller.cli.parser.patterns.behavioral;
 
 import w16cs350.controller.cli.parser.patterns.A_NonIteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
-import w16cs350.controller.cli.parser.patterns.behavioral.do_.DoPatternMatcher;
 
 /**
  * Utility methods to initialize Behavioral pattern

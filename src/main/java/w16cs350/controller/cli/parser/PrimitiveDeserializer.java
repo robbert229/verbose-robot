@@ -10,7 +10,44 @@ import java.util.regex.Pattern;
  * Created by RowleyJohn on 2/23/2016.
  */
 public class PrimitiveDeserializer {
-    private static Pattern latlonPattern = Pattern.compile("([0-9]*)\\*([0-9]*)\\'([0-9]*)\"");
+    private static String latlonRegex = "([0-9]*)\\*([0-9]*)\\'([0-9]*)\"";
+    private static Pattern latlonPattern = Pattern.compile(latlonRegex);
+
+    /**
+     * Returns true if the next three tokens in tokens is a CoordinatesWorld.
+     * @param tokens The ListIterator containing the tokens to be checked.
+     * @return True if the next three tokens make a valid CoordinatesWorld
+     */
+    public static boolean isNextCoordinatesWorld(ListIterator<String> tokens){
+        String lat = tokens.next();
+        String slash = tokens.next();
+        String lon = tokens.next();
+
+        for(int i = 0; i < 3; i++)
+            tokens.previous();
+
+        return isNextCoordinatesWorld(lat, slash, lon);
+    }
+
+    private static boolean isNextCoordinatesWorld(String latitude, String slash, String longitude){
+        return isNextLatitudeLongitude(latitude) && slash.equals("/") && isNextLatitudeLongitude(longitude);
+    }
+
+    /**
+     * Returns true if the next token is a Latitude or a Longitude.
+     * @param tokens The tokens to search for the lat / long in.
+     * @return True if the next token is a Latitude or Longitude.
+     */
+    public static boolean isNextLatitudeLongitude(ListIterator<String> tokens){
+        String raw = tokens.next();
+        tokens.previous();
+        return isNextLatitudeLongitude(raw);
+    }
+
+    private static boolean isNextLatitudeLongitude(String raw){
+        Matcher m = latlonPattern.matcher(raw);
+        return m.find();
+    }
 
     /**
      * Consumes 1 token from the list iterator in the format of DEGREE*MINUTE'SECONDS", and returns a Latitude
@@ -92,5 +129,22 @@ public class PrimitiveDeserializer {
         double yCoordinates = Double.parseDouble(tokens.next());
 
         return new CoordinatesDelta(xCoordinates, yCoordinates);
+    }
+
+    /**
+     * Returns true if the next token is a valid Angle.
+     * @param tokens the tokens to find the angle in.
+     * @return True if the next token is a valid angle.
+     */
+    public static boolean isNextAngle(ListIterator<String> tokens) {
+        String next = tokens.next();
+        tokens.previous();
+
+        try {
+            Double.parseDouble(next);
+            return true;
+        } catch (NumberFormatException nfe){
+            return false;
+        }
     }
 }
