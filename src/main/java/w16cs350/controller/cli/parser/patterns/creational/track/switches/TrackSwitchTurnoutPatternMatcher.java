@@ -82,6 +82,6 @@ public class TrackSwitchTurnoutPatternMatcher extends A_IteratingPatternMatcher{
 
     @Override
     protected boolean isLeaf() {
-        return false;
+        return true;
     }
 }

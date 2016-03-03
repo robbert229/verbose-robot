@@ -46,7 +46,7 @@ public class TrackCrossoverPatternMatcher extends A_IteratingPatternMatcher{
         CoordinatesDelta cdStart1 = PrimitiveDeserializer.parseCoordinatesDelta(tokens);
 
         String endToken1 = tokens.next();
-        Assert.isTrue(endToken1.equals("START"), "Incorrect input, expected: START");
+        Assert.isTrue(endToken1.equals("END"), "Incorrect input, expected: END");
         CoordinatesDelta cdEnd1 = PrimitiveDeserializer.parseCoordinatesDelta(tokens);
 
         String startToken2 = tokens.next();
@@ -54,7 +54,7 @@ public class TrackCrossoverPatternMatcher extends A_IteratingPatternMatcher{
         CoordinatesDelta cdStart2 = PrimitiveDeserializer.parseCoordinatesDelta(tokens);
 
         String endToken2 = tokens.next();
-        Assert.isTrue(endToken2.equals("START"), "Incorrect input, expected: START");
+        Assert.isTrue(endToken2.equals("END"), "Incorrect input, expected: END");
         CoordinatesDelta cdEnd2 = PrimitiveDeserializer.parseCoordinatesDelta(tokens);
 
         return new CommandCreateTrackCrossover(idToken, reference, cdStart1, cdEnd1, cdStart2, cdEnd2);

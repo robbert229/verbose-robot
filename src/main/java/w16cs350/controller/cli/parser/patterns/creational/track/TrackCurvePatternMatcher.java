@@ -32,14 +32,14 @@ public class TrackCurvePatternMatcher extends A_IteratingPatternMatcher{
         throw new UnsupportedOperationException();
     }
 
-    //CREATE TRACK CURVE id1 REFERENCE ( coordinates_world | ( '$' id2 ) ) DELTA START coordinates_delta1
-    // END coordinates_delta2 ( ( DISTANCE ORIGIN number ) | ( ORIGIN coordinates_delta3 ) )
-
     @Override
     protected A_Command parseCommand(ListIterator<String> tokens) {
         String idToken = tokens.next();
         CommandParser cp = (CommandParser) getRoot();
         CoordinatesWorld reference = PrimitiveDeserializer.parseReference(tokens, cp.getHelper());
+
+        String deltaToken = tokens.next();
+        Assert.isTrue(deltaToken.equals("DELTA"), "Incorrect input, expected: DELTA");
 
         String startToken = tokens.next();
         Assert.isTrue(startToken.equals("START"), "Incorrect input, expected: START");

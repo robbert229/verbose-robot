@@ -99,6 +99,11 @@ public class PrimitiveDeserializer {
         return new CoordinatesDelta(xCoordinates, yCoordinates);
     }
 
+    /**
+     * Consumes 7 tokens from the list iterator ON TRACK id DISTANCE number FROM (START | END)
+     * @param tokens The tokens used to construct the TrackLocator
+     * @return A TrackLocator constructed from the tokens.
+     */
     public static TrackLocator parseTrackLocator(ListIterator<String> tokens){
         String onToken = tokens.next();
         Assert.isTrue(onToken.equals("ON"), "Incorrect input, expected: ON");
@@ -114,6 +119,11 @@ public class PrimitiveDeserializer {
         return new TrackLocator(trackID, distance, isFromAOrB);
     }
 
+    /**
+     * Consumes multiple tokens from the list iterator REFERENCE ( coordinates_world | ( '$' id2 ) ) DELTA START coordinates_delta1 END coordinates_delta2
+     * @param tokens The tokens used to construct the PointLocator
+     * @return A PointLocator constructed from the tokens.
+     */
     public static PointLocator parsePointLocator(ListIterator<String> tokens, A_ParserHelper ph){
         CoordinatesWorld reference = parseReference(tokens, ph);
         String deltaToken = tokens.next();
@@ -127,13 +137,18 @@ public class PrimitiveDeserializer {
         return new PointLocator(reference, cdStart, cdEnd);
     }
 
+    /**
+     * Consumes 2-4 tokens from the list iterator REFERENCE (coordinates_world | ('$' id))
+     * @param tokens The tokens used to construct the CoordinatesWorld
+     * @return A CoordinatesWorld constructed from the tokens.
+     */
     public static CoordinatesWorld parseReference(ListIterator<String> tokens, A_ParserHelper ph){
         String referenceToken = tokens.next();
         Assert.isTrue(referenceToken.equals("REFERENCE"), "Incorrect input, expected: REFERENCE");
         String ref = tokens.next();
         CoordinatesWorld cw;
         if(ref.charAt(0) == '$')
-            cw = ph.getReference(ref);
+            cw = ph.getReference(ref.substring(1));
         else {
             tokens.previous();
             cw = parseCoordinatesWorld(tokens);
@@ -141,6 +156,11 @@ public class PrimitiveDeserializer {
         return cw;
     }
 
+    /**
+     * Consumes all remaining tokens, which are supposed to be ids, from the list iterator
+     * @param tokens The token used to construct the List<String>
+     * @return A List<String> that contains the ids constructed from the tokens.
+     */
     public static List<String> parserIDList(ListIterator<String> tokens)
     {
         List<String> listIDs = new ArrayList<String>();
