@@ -4,9 +4,7 @@ import w16cs350.controller.cli.parser.CommandParser;
 import w16cs350.controller.cli.parser.PrimitiveDeserializer;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
-import w16cs350.controller.cli.parser.patterns.creational.track.TrackCurvePatternMatcher;
 import w16cs350.controller.command.A_Command;
-import w16cs350.controller.command.creational.CommandCreateTrackCurve;
 import w16cs350.controller.command.creational.CommandCreateTrackSwitchTurnout;
 import w16cs350.datatype.CoordinatesDelta;
 import w16cs350.datatype.CoordinatesWorld;
@@ -74,9 +72,7 @@ public class TrackSwitchTurnoutPatternMatcher extends A_IteratingPatternMatcher{
         String originToken = tokens.next();
         Assert.isTrue(originToken.equals("ORIGIN"), "Incorrect input, expected: ORIGIN");
         double distance = Double.parseDouble(tokens.next());
-        CommandCreateTrackCurve curve = new CommandCreateTrackCurve("temp", reference, cdCurveStart, cdCurveEnd, distance);
-        CoordinatesDelta cdOrigin = curve.getDeltaOrigin();
-
+        CoordinatesDelta cdOrigin = PrimitiveDeserializer.getOrigin(reference, cdCurveStart, cdCurveEnd, distance);
         return new CommandCreateTrackSwitchTurnout(idToken, reference, cdStraightStart, cdStraightEnd, cdCurveStart, cdCurveEnd, cdOrigin);
     }
 

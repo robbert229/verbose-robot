@@ -37,6 +37,29 @@ public class PrimitiveDeserializer {
     }
 
     /**
+     * Calculates the origin from given coordinates and distance
+     *
+     * @param reference      - the world reference coords
+     * @param deltaStart     - start coordinates
+     * @param deltaEnd       - end coordinates
+     * @param distanceOrigin - distance (positive or negative)
+     * @return -- the origin delta coordinates
+     */
+    public static CoordinatesDelta getOrigin(CoordinatesWorld reference, CoordinatesDelta deltaStart, CoordinatesDelta deltaEnd, double distanceOrigin) {
+
+        double halfdistance = deltaStart.calculateDistance(deltaEnd) / 2.0D;
+        Angle bearing = deltaStart.calculateBearing(deltaEnd);
+        CoordinatesDelta midPoint = deltaStart.calculateTarget(bearing, halfdistance);
+        Angle angleToOrigin;
+        if (distanceOrigin < 0)
+            angleToOrigin = bearing.subtract(Angle.ANGLE_090);
+        else
+            angleToOrigin = bearing.add(Angle.ANGLE_090);
+        double positiveDistance = (distanceOrigin * distanceOrigin) / distanceOrigin;
+        return midPoint.calculateTarget(angleToOrigin, positiveDistance);
+    }
+
+    /**
      * Returns true if the next token is a Latitude or a Longitude, or if the next three tokens
      * can make a Latitude or Longitude.
      *
@@ -177,27 +200,6 @@ public class PrimitiveDeserializer {
         return listIDs;
     }
 
-    /**
-     * Calculates the origin from given coordinates and distance
-     *
-     * @param reference - the world reference coords
-     * @param deltaStart - start coordinates
-     * @param deltaEnd - end coordinates
-     * @param distanceOrigin - distance (positive or negative)
-     * @return -- the origin delta coordinates
-     */
-    protected CoordinatesDelta getOrigin(CoordinatesWorld reference, CoordinatesDelta deltaStart, CoordinatesDelta deltaEnd, double distanceOrigin) {
 
-        double halfdistance = deltaStart.calculateDistance(deltaEnd) / 2.0D;
-        Angle bearing = deltaStart.calculateBearing(deltaEnd);
-        CoordinatesDelta midPoint = deltaStart.calculateTarget(bearing, halfdistance);
-        Angle angleToOrigin;
-        if (distanceOrigin < 0)
-            angleToOrigin = bearing.subtract(Angle.ANGLE_090);
-        else
-            angleToOrigin = bearing.add(Angle.ANGLE_090);
-        double positiveDistance = (distanceOrigin * distanceOrigin) / distanceOrigin;
-        return midPoint.calculateTarget(angleToOrigin, positiveDistance);
-    }
 
 }

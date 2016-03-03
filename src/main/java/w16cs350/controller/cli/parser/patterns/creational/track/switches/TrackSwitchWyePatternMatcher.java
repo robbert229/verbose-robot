@@ -4,9 +4,7 @@ import w16cs350.controller.cli.parser.CommandParser;
 import w16cs350.controller.cli.parser.PrimitiveDeserializer;
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
-import w16cs350.controller.cli.parser.patterns.creational.track.TrackCurvePatternMatcher;
 import w16cs350.controller.command.A_Command;
-import w16cs350.controller.command.creational.CommandCreateTrackCurve;
 import w16cs350.controller.command.creational.CommandCreateTrackSwitchWye;
 import w16cs350.datatype.CoordinatesDelta;
 import w16cs350.datatype.CoordinatesWorld;
@@ -57,8 +55,8 @@ public class TrackSwitchWyePatternMatcher extends A_IteratingPatternMatcher{
         String originToken1 = tokens.next();
         Assert.isTrue(originToken1.equals("ORIGIN"), "Incorrect input, expected: ORIGIN");
         double distance1 = Double.parseDouble(tokens.next());
-        CommandCreateTrackCurve curve1 = new CommandCreateTrackCurve("temp", reference, cdStart1, cdEnd1, distance1);
-        CoordinatesDelta cdOrigin1 = curve1.getDeltaOrigin();
+        CoordinatesDelta cdOrigin1 = PrimitiveDeserializer.getOrigin(reference, cdStart1, cdEnd1, distance1);
+
 
         String deltaToken2 = tokens.next();
         Assert.isTrue(deltaToken2.equals("DELTA"), "Incorrect input, expected: DELTA");
@@ -77,8 +75,7 @@ public class TrackSwitchWyePatternMatcher extends A_IteratingPatternMatcher{
         String originToken2 = tokens.next();
         Assert.isTrue(originToken2.equals("ORIGIN"), "Incorrect input, expected: ORIGIN");
         double distance2 = Double.parseDouble(tokens.next());
-        CommandCreateTrackCurve curve2 = new CommandCreateTrackCurve("temp", reference, cdStart2, cdEnd2, distance2);
-        CoordinatesDelta cdOrigin2 = curve2.getDeltaOrigin();
+        CoordinatesDelta cdOrigin2 = PrimitiveDeserializer.getOrigin(reference, cdStart2, cdEnd2, distance2);
 
         return new CommandCreateTrackSwitchWye(idToken, reference, cdStart1, cdEnd1, cdOrigin1, cdStart2, cdEnd2, cdOrigin2);
     }
