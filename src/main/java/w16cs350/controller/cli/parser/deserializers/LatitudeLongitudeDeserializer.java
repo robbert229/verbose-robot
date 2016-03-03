@@ -35,6 +35,7 @@ public class LatitudeLongitudeDeserializer {
     private interface I_Constructor {
         A_LatitudeLongitude construct(int degrees, int minutes, double seconds);
     }
+
     private static A_LatitudeLongitude parseA_LatitudeLongitude(ListIterator<String> tokens, I_Constructor constructor){
         String raw = tokens.next();
 
@@ -53,16 +54,9 @@ public class LatitudeLongitudeDeserializer {
         }
     }
 
-    /**
-     * Consumes 1 token from the list iterator in the format of DEGREE*MINUTE'SECONDS", and returns a Latitude
-     * constructed from it.
-     * @param tokens The token used to construct the Latitude
-     * @return A Latitude constructed from the tokens.
-     */
     public static Latitude parseLatitude(ListIterator<String> tokens){
         return (Latitude)parseA_LatitudeLongitude(tokens, (d,m,s) -> new Latitude(d,m,s));
     }
-
 
     public static Longitude parseLongitude(ListIterator<String> tokens){
         return (Longitude) parseA_LatitudeLongitude(tokens, (d,m,s) -> new Longitude(d,m,s));
