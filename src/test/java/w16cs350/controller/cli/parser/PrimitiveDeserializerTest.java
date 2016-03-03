@@ -50,6 +50,33 @@ public class PrimitiveDeserializerTest {
     }
 
     @Test
+    public void testParseCoordinatesWorldWhiteSpace() throws Exception {
+        CoordinatesWorld target = new CoordinatesWorld(new Latitude(1,2,4), new Longitude(3,5,7));
+        CoordinatesWorld attempt = PrimitiveDeserializer.parseCoordinatesWorld(CommandParser.getIteratorFromString("1* 2' 4\" / 3*5'7\""));
+        double delta = .1;
+        double distance = target.calculateDistanceMeters(attempt);
+        Assert.assertTrue("Delta: " + delta + ", is greater than Distance: " + distance, delta > distance);
+    }
+
+    @Test
+    public void testParseCoordinatesWorldWhiteSpace2() throws Exception {
+        CoordinatesWorld target = new CoordinatesWorld(new Latitude(1,2,4), new Longitude(3,5,7));
+        CoordinatesWorld attempt = PrimitiveDeserializer.parseCoordinatesWorld(CommandParser.getIteratorFromString("1* 2' 4\" / 3* 5' 7\""));
+        double delta = .1;
+        double distance = target.calculateDistanceMeters(attempt);
+        Assert.assertTrue("Delta: " + delta + ", is greater than Distance: " + distance, delta > distance);
+    }
+
+    @Test
+    public void testParseCoordinatesWorldWhiteSpace3() throws Exception {
+        CoordinatesWorld target = new CoordinatesWorld(new Latitude(1,2,4), new Longitude(3,5,7));
+        CoordinatesWorld attempt = PrimitiveDeserializer.parseCoordinatesWorld(CommandParser.getIteratorFromString("1* 2' 4\" / 3* 5' 7\""));
+        double delta = .1;
+        double distance = target.calculateDistanceMeters(attempt);
+        Assert.assertTrue("Delta: " + delta + ", is greater than Distance: " + distance, delta > distance);
+    }
+
+    @Test
     public void testParseAngle() throws Exception {
         Angle target = new Angle(120);
         Angle attempt = PrimitiveDeserializer.parseAngle(CommandParser.getIteratorFromString("120"));
@@ -58,18 +85,47 @@ public class PrimitiveDeserializerTest {
 
     @Test
     public void testParseCoordinatesDelta() throws Exception {
+        CoordinatesDelta target = new CoordinatesDelta(-102.39,390.01);
+        CoordinatesDelta attempt = PrimitiveDeserializer.parseCoordinatesDelta(CommandParser.getIteratorFromString("-102.39:390.01"));
+        double delta = 0.001;
+        double distance = target.calculateDistance(attempt);
+        Assert.assertTrue("delta: " + delta + ", is greater than distance: " + distance, distance < delta);
+    }
+
+    @Test
+    public void testParseCoordinatesDeltaWhiteSpace() throws Exception {
         CoordinatesDelta target = new CoordinatesDelta(102.39,390.01);
         CoordinatesDelta attempt = PrimitiveDeserializer.parseCoordinatesDelta(CommandParser.getIteratorFromString("102.39 : 390.01"));
         double delta = 0.001;
         double distance = target.calculateDistance(attempt);
         Assert.assertTrue("delta: " + delta + ", is greater than distance: " + distance, distance < delta);
-
     }
 
     @Test
     public void testIsNextLatitudeLongitude() throws Exception {
         String latitude = "10*20'10\"";
         Assert.assertTrue(latitude + " isn't a valid latitude",
+                PrimitiveDeserializer.isNextLatitudeLongitude(CommandParser.getIteratorFromString(latitude)));
+    }
+
+    @Test
+    public void testIsNextLatitudeLongitudeFalse() throws Exception {
+        String latitude = "10*20'10\"s";
+        Assert.assertFalse(latitude + " isn't a valid latitude",
+                PrimitiveDeserializer.isNextLatitudeLongitude(CommandParser.getIteratorFromString(latitude)));
+    }
+
+    @Test
+    public void testIsNextLatitudeLongitudeWhiteSpace() throws Exception {
+        String latitude = "10* 20' 10\"";
+        Assert.assertTrue(latitude + " isn't a valid latitude",
+                PrimitiveDeserializer.isNextLatitudeLongitude(CommandParser.getIteratorFromString(latitude)));
+    }
+
+    @Test
+    public void testIsNextLatitudeLongitudeWhiteSpaceFalse() throws Exception {
+        String latitude = "10* 20' 10false\"";
+        Assert.assertFalse(latitude + " isn't a valid latitude",
                 PrimitiveDeserializer.isNextLatitudeLongitude(CommandParser.getIteratorFromString(latitude)));
     }
 
@@ -92,6 +148,4 @@ public class PrimitiveDeserializerTest {
         Assert.assertFalse(PrimitiveDeserializer.isNextAngle(CommandParser.getIteratorFromString("124.0fo")));
 
     }
-
-
 }
