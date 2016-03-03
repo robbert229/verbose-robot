@@ -1,6 +1,10 @@
 package w16cs350.controller.cli.parser.patterns;
+
 import w16cs350.controller.cli.parser.A_ParserHelper;
 import w16cs350.controller.command.A_Command;
+import w16cs350.datatype.Angle;
+import w16cs350.datatype.CoordinatesDelta;
+import w16cs350.datatype.CoordinatesWorld;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -100,6 +104,29 @@ public abstract class A_PatternMatcher {
         return getParent().getHelper();
     }
 
+    /**
+     * Returns the root of the pattern matcher tree
+     *
+     * @return The root node of the tree
+     */
+    public A_PatternMatcher getRoot() {
+        A_PatternMatcher p = this;
+        while (p.getParent() != null)
+            p = p.getParent();
+
+        return p;
+    }
+
+    protected CoordinatesDelta getOrigin(CoordinatesWorld reference, CoordinatesDelta deltaStart, CoordinatesDelta deltaEnd, double distanceOrigin) {
+
+        double halfdistance = deltaStart.calculateDistance(deltaEnd) / 2.0D;
+        Angle angle = deltaStart.calculateBearing(deltaEnd);
+        CoordinatesDelta deltaHalfway = deltaStart.calculateTarget(angle, halfdistance);
+        Angle angleRight = distanceOrigin >= 0.0D ? angle.add(Angle.ANGLE_090) : angle.subtract(Angle.ANGLE_090);
+        double distanceTangent2 = Math.abs(distanceOrigin);
+        CoordinatesDelta deltaOrigin = deltaHalfway.calculateTarget(angleRight, distanceTangent2);
+        return deltaOrigin;
+    }
 
     /**
      * called upon delegating a command to a child node. Is used in subclasses to rewind or fast-forward if needed.
