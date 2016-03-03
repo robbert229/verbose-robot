@@ -39,10 +39,11 @@ public class PrimitiveDeserializer {
     /**
      * Returns true if the next token is a Latitude or a Longitude, or if the next three tokens
      * can make a Latitude or Longitude.
+     *
      * @param tokens The tokens to search for the lat / long in.
      * @return True if the next token is a Latitude or Longitude.
      */
-    public static boolean isNextLatitudeLongitude(ListIterator<String> tokens){
+    public static boolean isNextLatitudeLongitude(ListIterator<String> tokens) {
         return LatitudeLongitudeDeserializer.isNextLatitudeLongitude(tokens);
     }
 
@@ -51,7 +52,7 @@ public class PrimitiveDeserializer {
      * @param tokens The ListIterator containing the tokens to be checked.
      * @return True if the next three tokens make a valid CoordinatesWorld
      */
-    public static boolean isNextCoordinatesWorld(ListIterator<String> tokens){
+    public static boolean isNextCoordinatesWorld(ListIterator<String> tokens) {
         return CoordinatesWorldDeserializer.isNextCoordinatesWorld(tokens);
     }
 
@@ -61,7 +62,7 @@ public class PrimitiveDeserializer {
      * @param tokens The tokens used to construct the CoordinatesWorld
      * @return A CoordinatesWorld constructed from the tokens.
      */
-    public static CoordinatesWorld parseCoordinatesWorld(ListIterator<String> tokens){
+    public static CoordinatesWorld parseCoordinatesWorld(ListIterator<String> tokens) {
         return CoordinatesWorldDeserializer.parseCoordinatesWorld(tokens);
     }
 
@@ -71,7 +72,7 @@ public class PrimitiveDeserializer {
      * @param tokens The ListIterator containing the tokens.
      * @return The parsed CoordinatesDelta
      */
-    public static CoordinatesDelta parseCoordinatesDelta(ListIterator<String> tokens){
+    public static CoordinatesDelta parseCoordinatesDelta(ListIterator<String> tokens) {
         return CoordinatesDeltaDeserializer.parseCoordinatesDelta(tokens);
     }
 
@@ -87,7 +88,7 @@ public class PrimitiveDeserializer {
         try {
             Double.parseDouble(next);
             return true;
-        } catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             return false;
         }
     }
@@ -98,7 +99,7 @@ public class PrimitiveDeserializer {
      * @param tokens The ListIterator containing the tokens.
      * @return Returns the Angle from the parsed input.
      */
-    public static Angle parseAngle(ListIterator<String> tokens){
+    public static Angle parseAngle(ListIterator<String> tokens) {
         double angle = Double.parseDouble(tokens.next());
         return new Angle(angle);
     }
@@ -174,6 +175,29 @@ public class PrimitiveDeserializer {
         while (tokens.hasNext())
             listIDs.add(tokens.next());
         return listIDs;
+    }
+
+    /**
+     * Calculates the origin from given coordinates and distance
+     *
+     * @param reference - the world reference coords
+     * @param deltaStart - start coordinates
+     * @param deltaEnd - end coordinates
+     * @param distanceOrigin - distance (positive or negative)
+     * @return -- the origin delta coordinates
+     */
+    protected CoordinatesDelta getOrigin(CoordinatesWorld reference, CoordinatesDelta deltaStart, CoordinatesDelta deltaEnd, double distanceOrigin) {
+
+        double halfdistance = deltaStart.calculateDistance(deltaEnd) / 2.0D;
+        Angle bearing = deltaStart.calculateBearing(deltaEnd);
+        CoordinatesDelta midPoint = deltaStart.calculateTarget(bearing, halfdistance);
+        Angle angleToOrigin;
+        if (distanceOrigin < 0)
+            angleToOrigin = bearing.subtract(Angle.ANGLE_090);
+        else
+            angleToOrigin = bearing.add(Angle.ANGLE_090);
+        double positiveDistance = (distanceOrigin * distanceOrigin) / distanceOrigin;
+        return midPoint.calculateTarget(angleToOrigin, positiveDistance);
     }
 
 }
