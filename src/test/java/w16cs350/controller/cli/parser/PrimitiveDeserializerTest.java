@@ -85,8 +85,8 @@ public class PrimitiveDeserializerTest {
 
     @Test
     public void testParseCoordinatesDelta() throws Exception {
-        CoordinatesDelta target = new CoordinatesDelta(102.39,390.01);
-        CoordinatesDelta attempt = PrimitiveDeserializer.parseCoordinatesDelta(CommandParser.getIteratorFromString("102.39:390.01"));
+        CoordinatesDelta target = new CoordinatesDelta(-102.39,390.01);
+        CoordinatesDelta attempt = PrimitiveDeserializer.parseCoordinatesDelta(CommandParser.getIteratorFromString("-102.39:390.01"));
         double delta = 0.001;
         double distance = target.calculateDistance(attempt);
         Assert.assertTrue("delta: " + delta + ", is greater than distance: " + distance, distance < delta);
