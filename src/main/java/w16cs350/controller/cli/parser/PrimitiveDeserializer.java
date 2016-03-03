@@ -1,17 +1,45 @@
 package w16cs350.controller.cli.parser;
 
+import w16cs350.controller.cli.parser.deserializers.CoordinatesDeltaDeserializer;
+import w16cs350.controller.cli.parser.deserializers.CoordinatesWorldDeserializer;
+import w16cs350.controller.cli.parser.deserializers.LatitudeLongitudeDeserializer;
 import w16cs350.datatype.*;
 
 import java.util.ListIterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
  * Created by RowleyJohn on 2/23/2016.
  */
 public class PrimitiveDeserializer {
-    private static String latlonRegex = "([0-9]*)\\*([0-9]*)\\'([0-9]*)\"";
-    private static Pattern latlonPattern = Pattern.compile(latlonRegex);
+
+    /**
+     * Consumes one or three tokens from the list iterator in the format of DEGREE*MINUTE'SECONDS",
+     * and returns a Latitude * constructed from it.
+     * @param tokens The token used to construct the Longitude
+     * @return A Longitude constructed from the tokens.
+     */
+    public static Latitude parseLatitude(ListIterator<String> tokens){
+        return LatitudeLongitudeDeserializer.parseLatitude(tokens);
+    }
+
+    /**
+     * Consumes one or three tokens from the list iterator in the format of DEGREE*MINUTE'SECONDS",
+     * and returns a Longitude * constructed from it.
+     * @param tokens The token used to construct the Longitude
+     * @return A Longitude constructed from the tokens.
+     */
+    public static Longitude parseLongitude(ListIterator<String> tokens){
+        return LatitudeLongitudeDeserializer.parseLongitude(tokens);
+    }
+
+    /**
+     * Returns true if the next token is a Latitude or a Longitude, or if the next three tokens
+     * can make a Latitude or Longitude.
+     * @param tokens The tokens to search for the lat / long in.
+     * @return True if the next token is a Latitude or Longitude.
+     */
+    public static boolean isNextLatitudeLongitude(ListIterator<String> tokens){
+        return LatitudeLongitudeDeserializer.isNextLatitudeLongitude(tokens);
+    }
 
     /**
      * Returns true if the next three tokens in tokens is a CoordinatesWorld.
@@ -19,78 +47,7 @@ public class PrimitiveDeserializer {
      * @return True if the next three tokens make a valid CoordinatesWorld
      */
     public static boolean isNextCoordinatesWorld(ListIterator<String> tokens){
-        String lat = tokens.next();
-        String slash = tokens.next();
-        String lon = tokens.next();
-
-        for(int i = 0; i < 3; i++)
-            tokens.previous();
-
-        return isNextCoordinatesWorld(lat, slash, lon);
-    }
-
-    private static boolean isNextCoordinatesWorld(String latitude, String slash, String longitude){
-        return isNextLatitudeLongitude(latitude) && slash.equals("/") && isNextLatitudeLongitude(longitude);
-    }
-
-    /**
-     * Returns true if the next token is a Latitude or a Longitude.
-     * @param tokens The tokens to search for the lat / long in.
-     * @return True if the next token is a Latitude or Longitude.
-     */
-    public static boolean isNextLatitudeLongitude(ListIterator<String> tokens){
-        String raw = tokens.next();
-        tokens.previous();
-        return isNextLatitudeLongitude(raw);
-    }
-
-    private static boolean isNextLatitudeLongitude(String raw){
-        Matcher m = latlonPattern.matcher(raw);
-        return m.find();
-    }
-
-    /**
-     * Consumes 1 token from the list iterator in the format of DEGREE*MINUTE'SECONDS", and returns a Latitude
-     * constructed from it.
-     * @param tokens The token used to construct the Latitude
-     * @return A Latitude constructed from the tokens.
-     */
-    public static Latitude parseLatitude(ListIterator<String> tokens){
-        String raw = tokens.next();
-
-        Matcher m = latlonPattern.matcher(raw);
-        if(m.find()) {
-
-            int degree = Integer.parseInt(m.group(1));
-            int minutes = Integer.parseInt(m.group(2));
-            double seconds = Double.parseDouble(m.group(3));
-
-            return new Latitude(degree, minutes, seconds);
-        } else {
-            throw new RuntimeException("Doesn't Match Regex: " + raw);
-        }
-    }
-
-    /**
-     * Consumes 1 token from the list iterator in the format of DEGREE*MINUTE'SECONDS", and returns a Longitude
-     * constructed from it.
-     * @param tokens The token used to construct the Longitude
-     * @return A Longitude constructed from the tokens.
-     */
-    public static Longitude parseLongitude(ListIterator<String> tokens){
-        String raw = tokens.next();
-
-        Matcher m = latlonPattern.matcher(raw);
-        if(m.find()) {
-
-            int degree = Integer.parseInt(m.group(1));
-            int minutes = Integer.parseInt(m.group(2));
-            double seconds = Double.parseDouble(m.group(3));
-
-            return new Longitude(degree, minutes, seconds);
-        } else {
-            throw new RuntimeException("Doesn't Match Regex: " + raw);
-        }
+        return CoordinatesWorldDeserializer.isNextCoordinatesWorld(tokens);
     }
 
     /**
@@ -100,21 +57,7 @@ public class PrimitiveDeserializer {
      * @return A CoordinatesWorld constructed from the tokens.
      */
     public static CoordinatesWorld parseCoordinatesWorld(ListIterator<String> tokens){
-        Latitude lat = parseLatitude(tokens);
-        tokens.next();
-        Longitude lon = parseLongitude(tokens);
-        return new CoordinatesWorld(lat,lon);
-    }
-
-    /**
-     * Consumes a single token from the list iterator in the format of "NUMBER", and returns an Angle constructed from
-     * it.
-     * @param tokens The ListIterator containing the tokens.
-     * @return Returns the Angle from the parsed input.
-     */
-    public static Angle parseAngle(ListIterator<String> tokens){
-        double angle = Double.parseDouble(tokens.next());
-        return new Angle(angle);
+        return CoordinatesWorldDeserializer.parseCoordinatesWorld(tokens);
     }
 
     /**
@@ -124,11 +67,7 @@ public class PrimitiveDeserializer {
      * @return The parsed CoordinatesDelta
      */
     public static CoordinatesDelta parseCoordinatesDelta(ListIterator<String> tokens){
-        double xCoordinates = Double.parseDouble(tokens.next());
-        tokens.next();
-        double yCoordinates = Double.parseDouble(tokens.next());
-
-        return new CoordinatesDelta(xCoordinates, yCoordinates);
+        return CoordinatesDeltaDeserializer.parseCoordinatesDelta(tokens);
     }
 
     /**
@@ -147,4 +86,16 @@ public class PrimitiveDeserializer {
             return false;
         }
     }
+
+    /**
+     * Consumes a single token from the list iterator in the format of "NUMBER", and returns an Angle constructed from
+     * it.
+     * @param tokens The ListIterator containing the tokens.
+     * @return Returns the Angle from the parsed input.
+     */
+    public static Angle parseAngle(ListIterator<String> tokens){
+        double angle = Double.parseDouble(tokens.next());
+        return new Angle(angle);
+    }
+
 }
