@@ -58,6 +58,7 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
      */
     public void parse() {
         Arrays.stream(line.split(";"))
+                .filter(T -> T.charAt(0) != '/' && T.charAt(1) != '/')
                 .map(this::parseCommand)
                 .filter(Command -> Command != null)
                 .forEach(this::schedule);

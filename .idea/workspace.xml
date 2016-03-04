@@ -2,38 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07e43aec-4679-4a47-afc6-8ed9397bcf99" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/cs350_jar_0_4__2_.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/cs350-jar-0_4.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/MultipleCommandParsingTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/ParserFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/PrimitiveDeserializerTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/ParserTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/BehavioralTestSuite.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/brake/BrakePatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/select/DrawbridgePatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/select/RoundhousePatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/select/SwitchPatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/set/DirectionPatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/set/ReferencePatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/set/SpeedPatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/creational/PowerTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/creational/StockTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/creational/TrackTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/CloseViewPatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/ExitPatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/MetaTestSuite.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/OpenViewPatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/RunPatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/SchedulePatternMatcherTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/UsePatternMatcherTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/cs350_jar_0_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/cs350_jar_0_4.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser.iml" afterPath="$PROJECT_DIR$/parser.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ExternalTest.java" afterPath="$PROJECT_DIR$/src/main/java/ExternalTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/CommandParser.java" afterPath="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/CommandParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/patterns/creational/track/TrackCrossingPatternMatcher.java" afterPath="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/patterns/creational/track/TrackCrossingPatternMatcher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/patterns/creational/track/bridge/TrackBridgeDrawPatternMatcher.java" afterPath="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/patterns/creational/track/bridge/TrackBridgeDrawPatternMatcher.java" />
     </list>
     <ignored path="parser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,21 +39,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/CommandParser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2102#2103#0" expanded="true" />
-                <element signature="e#2159#2160#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommandLineInterface.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/cs350-jar-0_4.jar!/w16cs350/controller/cli/CommandLineInterface.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="30.193548">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,36 +50,8 @@
       <file leaf-file-name="ExternalTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ExternalTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3865199">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrackCurvePatternMatcher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/patterns/creational/track/TrackCurvePatternMatcher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#764#765#0" expanded="false" />
-                <element signature="e#793#794#0" expanded="false" />
-                <element signature="e#1026#1027#0" expanded="false" />
-                <element signature="e#1083#1084#0" expanded="false" />
-                <element signature="e#2869#2870#0" expanded="false" />
-                <element signature="e#2896#2897#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrimitiveDeserializer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/PrimitiveDeserializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="57" column="58" selection-start-line="57" selection-start-column="58" selection-end-line="57" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.66024756">
+              <caret line="28" column="79" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -157,6 +86,8 @@
         <option value="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/PrimitiveDeserializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/CommandParser/CommandParser.java" />
         <option value="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/PrimitiveDeserializerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/ParserFactory.java" />
+        <option value="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/OpenViewPatternMatcherTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/MultipleCommandParsingTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/CommandParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/ExternalTest.java" />
@@ -821,7 +752,7 @@
       <option name="number" value="Default" />
       <updated>1457108286597</updated>
       <workItem from="1457108288097" duration="490000" />
-      <workItem from="1457116262982" duration="2274000" />
+      <workItem from="1457116262982" duration="2899000" />
     </task>
     <task id="LOCAL-00001" summary="made non junit tester to test graphics&#10;fully working model from tappans slide example&#10;fixed test strings to reflect correct values&#10;@RUN FILE still having some issue,&#10;everything else working">
       <created>1457108747316</created>
@@ -829,7 +760,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457108747316</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="corrected CommandParser to accept MyParserHelper instead of A_ParserHelper (Per Tappan's revisions)&#10;All functions working&#10;">
+      <created>1457118771570</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1457118771570</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -838,7 +775,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2787000" />
+    <option name="totallyTimeSpent" value="3412000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -875,7 +812,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="made non junit tester to test graphics&#10;fully working model from tappans slide example&#10;fixed test strings to reflect correct values&#10;@RUN FILE still having some issue,&#10;everything else working" />
-    <option name="LAST_COMMIT_MESSAGE" value="made non junit tester to test graphics&#10;fully working model from tappans slide example&#10;fixed test strings to reflect correct values&#10;@RUN FILE still having some issue,&#10;everything else working" />
+    <MESSAGE value="corrected CommandParser to accept MyParserHelper instead of A_ParserHelper (Per Tappan's revisions)&#10;All functions working&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="corrected CommandParser to accept MyParserHelper instead of A_ParserHelper (Per Tappan's revisions)&#10;All functions working&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1165,6 +1103,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/ParserFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/OpenViewPatternMatcherTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13188648">
+          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/select/DrawbridgePatternMatcherTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/select/RoundhousePatternMatcherTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/select/SwitchPatternMatcherTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32053423">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/cs350-jar-0_4.jar!/w16cs350/controller/cli/CommandLineInterface.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="30.193548">
@@ -1175,22 +1153,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/brake/BrakePatternMatcherTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44073457">
+          <caret line="17" column="66" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/MultipleCommandParsingTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.16193657">
+          <caret line="52" column="9" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/CommandParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+          <caret line="64" column="5" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2102#2103#0" expanded="true" />
-            <element signature="e#2159#2160#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ExternalTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3865199">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.66024756">
+          <caret line="28" column="79" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
           <folding />
         </state>
       </provider>

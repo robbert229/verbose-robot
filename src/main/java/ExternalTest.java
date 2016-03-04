@@ -15,8 +15,10 @@ public class ExternalTest {
     }
 
     public static void main(String[] args) {
-        Startup start = new Startup();
-        start.go();
+        testSim();
+
+        // Startup start = new Startup();
+        // start.go();
         // @RUN C:\Users\Josh\Documents\test1.cts
     }
 
