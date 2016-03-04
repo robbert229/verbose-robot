@@ -55,7 +55,8 @@ public class TrackCurvePatternMatcher extends A_IteratingPatternMatcher{
             String originToken = tokens.next();
             Assert.isTrue(originToken.equals("ORIGIN"), "Incorrect input, expected: ORIGIN");
             double distance = Double.parseDouble(tokens.next());
-            return new CommandCreateTrackCurve(idToken, reference, cdStart, cdEnd, distance);
+            CoordinatesDelta deltaReference = PrimitiveDeserializer.getOrigin(reference, cdStart, cdEnd, distance);
+            return new CommandCreateTrackCurve(idToken, reference, cdStart, cdEnd, deltaReference);
         }
         else{
             CoordinatesDelta cdOrigin = PrimitiveDeserializer.parseCoordinatesDelta(tokens);

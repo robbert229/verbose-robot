@@ -55,7 +55,7 @@ public class PrimitiveDeserializer {
             angleToOrigin = bearing.subtract(Angle.ANGLE_090);
         else
             angleToOrigin = bearing.add(Angle.ANGLE_090);
-        double positiveDistance = (distanceOrigin * distanceOrigin) / distanceOrigin;
+        double positiveDistance = Math.abs(distanceOrigin);
         return midPoint.calculateTarget(angleToOrigin, positiveDistance);
     }
 
