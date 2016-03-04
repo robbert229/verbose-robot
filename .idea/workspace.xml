@@ -2,9 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07e43aec-4679-4a47-afc6-8ed9397bcf99" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/MultipleCommandParsingTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/ParserFactory.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/PrimitiveDeserializerTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/ParserTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/BehavioralTestSuite.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/brake/BrakePatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/select/DrawbridgePatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/select/RoundhousePatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/select/SwitchPatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/set/DirectionPatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/set/ReferencePatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/behavioral/set/SpeedPatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/creational/PowerTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/creational/StockTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/creational/TrackTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/CloseViewPatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/ExitPatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/MetaTestSuite.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/OpenViewPatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/RunPatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/SchedulePatternMatcherTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/w16cs350/controller/cli/parser/patterns/meta/UsePatternMatcherTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ExternalTest.java" afterPath="$PROJECT_DIR$/src/main/java/ExternalTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/CommandParser.java" afterPath="$PROJECT_DIR$/src/main/java/w16cs350/controller/cli/parser/CommandParser.java" />
     </list>
     <ignored path="parser.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,8 +70,8 @@
       <file leaf-file-name="ExternalTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ExternalTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.66024756">
-              <caret line="28" column="79" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
+            <state vertical-scroll-proportion="0.36313617">
+              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -191,6 +211,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -752,7 +776,7 @@
       <option name="number" value="Default" />
       <updated>1457108286597</updated>
       <workItem from="1457108288097" duration="490000" />
-      <workItem from="1457116262982" duration="2899000" />
+      <workItem from="1457116262982" duration="3031000" />
     </task>
     <task id="LOCAL-00001" summary="made non junit tester to test graphics&#10;fully working model from tappans slide example&#10;fixed test strings to reflect correct values&#10;@RUN FILE still having some issue,&#10;everything else working">
       <created>1457108747316</created>
@@ -766,7 +790,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457118771570</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed test classes to use MyParserHelper instead of A_ParserHelper&#10;fixed CommandParser to ignore &quot;//&quot; in file comments">
+      <created>1457119359051</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1457119359051</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -775,11 +805,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3412000" />
+    <option name="totallyTimeSpent" value="3544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -791,7 +821,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32806325" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.245625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.245625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -813,7 +843,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="made non junit tester to test graphics&#10;fully working model from tappans slide example&#10;fixed test strings to reflect correct values&#10;@RUN FILE still having some issue,&#10;everything else working" />
     <MESSAGE value="corrected CommandParser to accept MyParserHelper instead of A_ParserHelper (Per Tappan's revisions)&#10;All functions working&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="corrected CommandParser to accept MyParserHelper instead of A_ParserHelper (Per Tappan's revisions)&#10;All functions working&#10;" />
+    <MESSAGE value="fixed test classes to use MyParserHelper instead of A_ParserHelper&#10;fixed CommandParser to ignore &quot;//&quot; in file comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed test classes to use MyParserHelper instead of A_ParserHelper&#10;fixed CommandParser to ignore &quot;//&quot; in file comments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1181,8 +1212,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ExternalTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66024756">
-          <caret line="28" column="79" selection-start-line="28" selection-start-column="79" selection-end-line="28" selection-end-column="79" />
+        <state vertical-scroll-proportion="0.36313617">
+          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
           <folding />
         </state>
       </provider>
