@@ -36,6 +36,7 @@ public class UsePatternMatcher extends A_SubPatternMatcher {
         Assert.isTrue(getNextToken("matching REFERENCE").equals("REFERENCE"), "Token should be REFERENCE");
         CoordinatesWorld world = PrimitiveDeserializer.parseCoordinatesWorld(tokens);
         store.addReference(id, world);
+
         return null;
     }
 

@@ -46,7 +46,7 @@ public class OpenViewPatternMatcher extends A_SubPatternMatcher {
         if(PrimitiveDeserializer.isNextCoordinatesWorld(tokens)){
             coordinatesWorld = PrimitiveDeserializer.parseCoordinatesWorld(tokens);
         } else {
-            coordinatesWorld = getHelper().getReference(tokens.next());
+            coordinatesWorld = getHelper().getReference(tokens.next().substring(1));
             Assert.isNonnull(coordinatesWorld != null, "CoordinatesWorld shouldn't be NULL");
         }
 
