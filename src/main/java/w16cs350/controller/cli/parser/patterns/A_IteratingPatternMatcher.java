@@ -23,4 +23,6 @@ public abstract class A_IteratingPatternMatcher extends A_PatternMatcher {
     protected final void traverse(ListIterator<String> iterator) {
         iterator.next();
     }
+
+
 }

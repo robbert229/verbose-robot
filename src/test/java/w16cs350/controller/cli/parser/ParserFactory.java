@@ -9,7 +9,7 @@ import w16cs350.controller.cli.CommandLineInterface;
  */
 
 public class ParserFactory {
-    public static A_ParserHelper buildHelper(){
+    public static MyParserHelper buildHelper(){
         return new MyParserHelper(new ActionProcessor(new CommandLineInterface(new Controller())));
     }
 }

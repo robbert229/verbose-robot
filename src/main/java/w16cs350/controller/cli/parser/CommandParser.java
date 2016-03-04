@@ -1,5 +1,6 @@
 package w16cs350.controller.cli.parser;
 
+import w16cs350.controller.cli.parser.A_ParserHelper;
 import w16cs350.controller.cli.parser.patterns.A_NonIteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.RootPatternMatcher;
 import w16cs350.controller.command.A_Command;
@@ -19,9 +20,9 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
     private A_ParserHelper helper;
     private String line;
 
-    public CommandParser(A_ParserHelper helper, String line) {
-        super(null);
 
+    public CommandParser(MyParserHelper helper, String line) {
+        super(null);
         this.helper = helper;
         this.line = line;
     }
@@ -32,8 +33,11 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
      * @return A ListIterator containing the string delimited by spaces.
      */
     public static ListIterator<String> getIteratorFromString(String string) {
-        String[] tokens = string.split(" ");
-        return Arrays.stream(tokens).collect(Collectors.toList()).listIterator();
+        String[] tokens = string.split(" |\t");
+        return Arrays.stream(tokens)
+                .filter(Token -> !Token.equals(""))
+                .collect(Collectors.toList())
+                .listIterator();
     }
 
     /**
@@ -54,7 +58,9 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
      */
     public void parse() {
         Arrays.stream(line.split(";"))
+                .filter(T -> T.charAt(0) != '/' && T.charAt(1) != '/')
                 .map(this::parseCommand)
+                .filter(Command -> Command != null)
                 .forEach(this::schedule);
     }
 

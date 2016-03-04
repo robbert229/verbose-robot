@@ -15,7 +15,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
-      <library name="Gradle: cs350-jar-0_1">
+      <library name="Gradle: C__Users_RowleyJohn_IdeaProjects_verbose_robot_libs_cs350_jar_0_1_jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/libs/cs350-jar-0_1.jar!/" />
         </CLASSES>
@@ -25,6 +25,6 @@
     </orderEntry>
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
-    <orderEntry type="library" name="cs350-jar-0_1 (2)" level="project" />
+    <orderEntry type="library" name="cs350-jar-0_4" level="project" />
   </component>
 </module>
