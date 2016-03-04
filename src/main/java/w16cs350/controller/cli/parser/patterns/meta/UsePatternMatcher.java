@@ -1,7 +1,6 @@
 package w16cs350.controller.cli.parser.patterns.meta;
 
 import w16cs350.controller.cli.parser.A_ParserHelper;
-import w16cs350.controller.cli.parser.EmptyCommand;
 import w16cs350.controller.cli.parser.PrimitiveDeserializer;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_SubPatternMatcher;
@@ -37,7 +36,7 @@ public class UsePatternMatcher extends A_SubPatternMatcher {
         Assert.isTrue(getNextToken("matching REFERENCE").equals("REFERENCE"), "Token should be REFERENCE");
         CoordinatesWorld world = PrimitiveDeserializer.parseCoordinatesWorld(tokens);
         store.addReference(id, world);
-        return new EmptyCommand();
+        return null;
     }
 
     @Override

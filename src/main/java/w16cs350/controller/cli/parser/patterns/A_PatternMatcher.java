@@ -12,6 +12,7 @@ import java.util.ListIterator;
  */
 
 public abstract class A_PatternMatcher {
+    public boolean schedulable;
     private List<A_PatternMatcher> patternMatchers;
     private A_PatternMatcher parent;
 
@@ -20,6 +21,7 @@ public abstract class A_PatternMatcher {
         if(!isLeaf())
             initializeMatchers();
         this.parent = parent;
+        schedulable = true;
     }
 
     /**
