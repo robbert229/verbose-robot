@@ -38,7 +38,7 @@ public class OpenViewPatternMatcherTest {
         CommandParser parserSetReference = new CommandParser(helper, "USE origin AS REFERENCE 1*2'4\" / 10*20'40\"");
         parserSetReference.parse();
 
-        CommandParser parser = new CommandParser(helper, "OPEN VIEW MAIN ORIGIN origin WORLD WIDTH 100 SCREEN WIDTH 640 HEIGHT 480");
+        CommandParser parser = new CommandParser(helper, "OPEN VIEW MAIN ORIGIN $origin WORLD WIDTH 100 SCREEN WIDTH 640 HEIGHT 480");
         A_Command c = parser.parseCommand();
         assert(c instanceof CommandMetaViewGenerate);
         CommandMetaViewGenerate command = (CommandMetaViewGenerate)c;
