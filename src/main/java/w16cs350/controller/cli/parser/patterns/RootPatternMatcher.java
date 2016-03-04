@@ -3,7 +3,7 @@ package w16cs350.controller.cli.parser.patterns;
 import w16cs350.controller.cli.parser.patterns.behavioral.BehavioralPatternmatcher;
 import w16cs350.controller.cli.parser.patterns.creational.CreationalCategoryPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.meta.MetaCategoryPatternMatcher;
-import w16cs350.controller.cli.parser.structural.StructuralPatternMatcher;
+import w16cs350.controller.cli.parser.patterns.structural.StructuralPatternMatcher;
 
 /**
  * Created by RowleyJohn on 2/25/2016.

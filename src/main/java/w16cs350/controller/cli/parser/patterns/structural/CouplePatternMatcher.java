@@ -1,9 +1,9 @@
-package w16cs350.controller.cli.parser.structural;
+package w16cs350.controller.cli.parser.patterns.structural;
 
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
 import w16cs350.controller.command.A_Command;
-import w16cs350.controller.command.structural.CommandStructuralUncouple;
+import w16cs350.controller.command.structural.CommandStructuralCouple;
 import w16cs350.support.Assert;
 
 import java.util.ListIterator;
@@ -11,8 +11,8 @@ import java.util.ListIterator;
 /**
  * Created by michael on 3/3/16.
  */
-public class UncouplePatternMatcher extends A_IteratingPatternMatcher {
-    public UncouplePatternMatcher(A_PatternMatcher parent) {
+public class CouplePatternMatcher extends A_IteratingPatternMatcher {
+    public CouplePatternMatcher(A_PatternMatcher parent) {
         super(parent);
     }
 
@@ -20,7 +20,7 @@ public class UncouplePatternMatcher extends A_IteratingPatternMatcher {
     protected boolean isMatch(ListIterator<String> tok) {
         String token = tok.next();
         tok.previous();
-        return token.equals("UNCOUPLE");
+        return token.equals("COUPLE");
     }
 
     @Override
@@ -36,7 +36,7 @@ public class UncouplePatternMatcher extends A_IteratingPatternMatcher {
         String andToken = tokens.next();
         Assert.isTrue(andToken.equals("AND"), "Incorrect input, expected: AND");
         String id2 = tokens.next();
-        return new CommandStructuralUncouple(id1, id2);
+        return new CommandStructuralCouple(id1, id2);
     }
 
     @Override

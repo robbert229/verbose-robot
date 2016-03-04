@@ -1,4 +1,4 @@
-package w16cs350.controller.cli.parser.structural;
+package w16cs350.controller.cli.parser.patterns.structural;
 
 import w16cs350.controller.cli.parser.patterns.A_IteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.A_PatternMatcher;
