@@ -4,8 +4,11 @@ import w16cs350.controller.cli.parser.PrimitiveDeserializer;
 import w16cs350.datatype.CoordinatesWorld;
 import w16cs350.datatype.Latitude;
 import w16cs350.datatype.Longitude;
+import w16cs350.support.Assert;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.stream.Collectors;
 
@@ -27,15 +30,29 @@ public class CoordinatesWorldDeserializer {
     }
 
     public static CoordinatesWorld parseCoordinatesWorld(ListIterator<String> tokens){
+        if(!PrimitiveDeserializer.isNextLatitudeLongitude(tokens)) {
+            int start = tokens.nextIndex();
+            String first = tokens.next();
+            while (tokens.nextIndex() > start)
+                tokens.previous();
 
-        ListIterator<String> just_coordinates;
+            String[] tokenArray = first.split("/");
 
-        just_coordinates = Arrays.stream(tokens.next().split("/"))
-                .collect(Collectors.toList())
-                .listIterator();
+            List<String> l = new ArrayList<>();
+            l.add(tokenArray[0]);
+            l.add("/");
+            l.add(tokenArray[1]);
 
-        Latitude lat = PrimitiveDeserializer.parseLatitude(just_coordinates);
-        Longitude lon = PrimitiveDeserializer.parseLongitude(just_coordinates);
-        return new CoordinatesWorld(lat,lon);
+            return parseCoordinatesWorldClean(l.listIterator());
+        } else {
+            return parseCoordinatesWorldClean(tokens);
+        }
+    }
+
+    private static CoordinatesWorld parseCoordinatesWorldClean(ListIterator<String> tokens){
+        Latitude lat = PrimitiveDeserializer.parseLatitude(tokens);
+        Assert.isTrue(tokens.next().equals("/"), "Token must be /");
+        Longitude lon = PrimitiveDeserializer.parseLongitude(tokens);
+        return new CoordinatesWorld(lat, lon);
     }
 }

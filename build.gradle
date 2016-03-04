@@ -13,8 +13,8 @@ repositories {
 
 dependencies {
     testCompile 'junit:junit:4.12'
-    runtime files('libs/cs350-jar-0_1.jar')
-    compile files('libs/cs350-jar-0_1.jar')
+    runtime files('libs/cs350-jar-0_4.jar')
+    compile files('libs/cs350-jar-0_4.jar')
 }
 
 jacocoTestReport {

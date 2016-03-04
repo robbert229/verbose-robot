@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="cs350-jar-0_4">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/cs350-jar-0_4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/cs350-jar-0_4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
