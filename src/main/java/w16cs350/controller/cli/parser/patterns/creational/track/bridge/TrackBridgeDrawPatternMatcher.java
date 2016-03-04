@@ -8,8 +8,6 @@ import w16cs350.controller.command.A_Command;
 import w16cs350.controller.command.PointLocator;
 import w16cs350.controller.command.creational.CommandCreateTrackBridgeDraw;
 import w16cs350.datatype.Angle;
-import w16cs350.datatype.CoordinatesDelta;
-import w16cs350.datatype.CoordinatesWorld;
 import w16cs350.support.Assert;
 
 import java.util.ListIterator;

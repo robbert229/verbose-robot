@@ -1,5 +1,6 @@
 package w16cs350.controller.cli.parser;
 
+import w16cs350.controller.cli.parser.A_ParserHelper;
 import w16cs350.controller.cli.parser.patterns.A_NonIteratingPatternMatcher;
 import w16cs350.controller.cli.parser.patterns.RootPatternMatcher;
 import w16cs350.controller.command.A_Command;
@@ -20,7 +21,7 @@ public class CommandParser extends A_NonIteratingPatternMatcher {
     private String line;
 
 
-    public CommandParser(A_ParserHelper helper, String line) {
+    public CommandParser(MyParserHelper helper, String line) {
         super(null);
         this.helper = helper;
         this.line = line;
