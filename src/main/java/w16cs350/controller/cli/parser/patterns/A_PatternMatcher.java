@@ -1,4 +1,5 @@
 package w16cs350.controller.cli.parser.patterns;
+
 import w16cs350.controller.cli.parser.A_ParserHelper;
 import w16cs350.controller.command.A_Command;
 
@@ -11,6 +12,7 @@ import java.util.ListIterator;
  */
 
 public abstract class A_PatternMatcher {
+    public boolean schedulable;
     private List<A_PatternMatcher> patternMatchers;
     private A_PatternMatcher parent;
 
@@ -19,6 +21,7 @@ public abstract class A_PatternMatcher {
         if(!isLeaf())
             initializeMatchers();
         this.parent = parent;
+        schedulable = true;
     }
 
     /**
@@ -100,6 +103,18 @@ public abstract class A_PatternMatcher {
         return getParent().getHelper();
     }
 
+    /**
+     * Returns the root of the pattern matcher tree
+     *
+     * @return The root node of the tree
+     */
+    public A_PatternMatcher getRoot() {
+        A_PatternMatcher p = this;
+        while (p.getParent() != null)
+            p = p.getParent();
+
+        return p;
+    }
 
     /**
      * called upon delegating a command to a child node. Is used in subclasses to rewind or fast-forward if needed.
