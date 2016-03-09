@@ -22,7 +22,7 @@ public class LatitudeTest {
 
     @Test
     public void testconvertToNMEA() {
-        lat1 = new Latitude(1, 2, 3);
+        lat1 = new Latitude(47, 40, 58);
         lat2 = new Latitude(1, 2, 3);
         assertEquals("test Latitude.convertToNMEA", 4740.966666666666, lat1.convertToNMEA(), .001);
         assertEquals("test Latitude.convertToNMEA", 102.05, lat2.convertToNMEA(), .001);
@@ -30,14 +30,14 @@ public class LatitudeTest {
 
     @Test
     public void testAdd() throws Exception {
-        lat1 = new Latitude(1, 2, 3);
+        lat1 = new Latitude(47, 40, 58);
         lat2 = new Latitude(1, 2, 3);
         assertEquals("test Latitude.add", 4843.016666666666, lat1.add(lat2).convertToNMEA(), .001);
     }
 
     @Test(expected = Exception.class)
     public void addError() throws Exception {
-        lat1 = new Latitude(1, 2, 3);
+        lat1 = new Latitude(47, 40, 58);
         lat2 = new Latitude(1, 2, 3);
         assertEquals("test Latitude.add", 4843.016666666666, lat2.add(lat1).convertToNMEA(), .001);
         assertEquals("test Latitude.subtract", 4638.916666666666, lat2.subtract(lat1).convertToNMEA(), .001);
@@ -45,14 +45,14 @@ public class LatitudeTest {
 
     @Test(expected = Exception.class)
     public void subtractError() throws Exception {
-        lat1 = new Latitude(1, 2, 3);
+        lat1 = new Latitude(47, 40, 58);
         lat2 = new Latitude(1, 2, 3);
         assertEquals("test Latitude.subtract", 4638.916666666666, lat2.subtract(lat1).convertToNMEA(), .001);
     }
 
     @Test
     public void testSubtract() throws Exception {
-        lat1 = new Latitude(1, 2, 3);
+        lat1 = new Latitude(47, 40, 58);
         lat2 = new Latitude(1, 2, 3);
         assertEquals("test Latitude.subtract", 4638.916666666666, lat1.subtract(lat2).convertToNMEA(), .001);
     }
